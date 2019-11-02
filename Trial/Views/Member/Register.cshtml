@@ -1,0 +1,332 @@
+﻿@model Trial.Models.Uye
+
+@{
+    ViewBag.Title = "Register";
+}
+
+
+
+
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a, em {
+            color: white;
+            font-size: 40px;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background-image: url('../../Picture/Arkaplan/fashion-glasses-go-pro-female-157888.jpeg');
+            /*background: url('https://jcdickerson.files.wordpress.com/2012/01/underwater.jpg') no-repeat;*/
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            font-family: "Fira Code";
+        }
+
+        .container {
+            border-radius:5px;
+            width: 290px;
+            height: 500px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #b67979;
+            display: -webkit-box;
+            opacity: 0.9;
+            transition: width .3s ease-in-out;
+        }
+
+        .tabs {
+            width: 100px;
+            height: 100%;
+            font-size: 1em;
+            transition: all .3s ease-in-out;
+            background-color: #b6797;
+        }
+
+
+            .tabs ul {
+                height: inherit;
+                list-style: none;
+                box-sizing: border-box;
+                background: #b67979;
+                border-right: 1px solid rgba(0,0,0,.4);
+            }
+
+            .tabs li {
+                top: 200px;
+                width: 65px;
+                height: 40px;
+                box-sizing: border-box;
+                margin-top: 70px;
+                background: #e83f3f;
+                transition: background .3s;
+            }
+
+                .tabs li a {
+                    display: block;
+                    font-weight: bold;
+                    line-height: 40px;
+                    font-size: 17px;
+                    margin-right: 20px;
+                    text-align: center;
+                }
+
+
+        .forms {
+            width: 10000px;
+            height: 100%;
+            transition: width .3s ease-in-out;
+            opacity: 1.5;
+        }
+
+            .forms p {
+                color: white;
+                font-size: 1.5em;
+                text-align: center;
+                transition: all .3s ease-in-out;
+            }
+
+        .register, .login, .reset {
+            display: none;
+            position: absolute;
+            width: 400px;
+            height: 80%;
+            box-sizing: border-box;
+        }
+
+        .register {
+            display: block;
+        }
+
+        .container form {
+            padding: 45px 0px;
+        }
+
+        input {
+            
+            background: rgba(0,0,0, .2);
+            font-size: 1em;
+            border: 0;
+            outline: none;
+            color: white;
+            transition: width .1s linear, border-bottom .2s linear;
+        }
+
+            input:active, input:focus {
+                border-bottom: 4px solid royalblue;
+            }
+
+            input[type="text"], input[type="password"], input[type="email"] {
+                width: 300px;
+                height: 30px;
+                padding: 8px;
+                margin-bottom: 20px;
+                box-sizing: border-box;
+            }
+
+        ::-webkit-input-placeholder {
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        input[type="submit"] {
+            padding: 8px;
+            width: 80px;
+            background: #e83f3f;
+            border: 0px;
+            color: white;
+            font-size: 18px;
+            font-weight: 400;
+            /*float: left;*/
+            margin-left: 40px;
+            cursor: pointer;
+            transition: background .3s;
+        }
+
+            input[type="submit"]:hover {
+                background: rgba(51,78,153,.8);
+            }
+
+        .tabs {
+            width: 100px;
+        }
+
+            .tabs ul {
+                padding-left: 0px;
+                padding-top: 10px;
+                margin-left: 15px;
+            }
+                .tabs ul li{
+                    margin-left:2px;
+                }
+                .forms {
+                    width: 220px;
+                }
+
+            .forms p {
+                font-size: 1.2em;
+            }
+
+        .register, .login, .reset {
+            width: 150px;
+            margin-left: 20px;
+        }
+
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: 140px;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+            <div class="tabs">
+                <ul>
+                    <li id="register"><a style="font-size:14px; margin-left:10px;">KAYIT</a></li>
+                    <li id="login"><a style="font-size:14px; margin-left:10px;">GİRİŞ</a></li>
+                    <li id="reset"><a style="font-size:14px; margin-left:8px;">YENİLE</a></li>
+                </ul>
+            </div>
+            <div class="forms" id="form">
+
+
+
+                <div class="register">
+
+                    @using (Html.BeginForm("Register", "Member", FormMethod.Post))
+                    {
+
+                        <form method="post" name="register" action="signup.jsp">
+                            <div class="group">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <input name="Username" type="text" placeholder="Kullanıcı Adı" required="required" />
+                                <label for="name"></label>
+                            </div>
+
+                            <div class="group">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <input class="text1" name="Name" type="text" placeholder="İsim" required="required" />
+                                <label for="name"></label>
+                            </div>
+
+
+
+                            <div class="group">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <input class="text1" name="Surname" type="text" placeholder="Soyisim" required="required" />
+                                <label for="name"></label>
+                            </div>
+                            <div class="group">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <input name="Email" type="text" placeholder="Email" required="required" />
+                                <label for="name"></label>
+                            </div>
+                            <div class="group">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <input name="Password" type="password" placeholder="Şifre" required="required" />
+                                <label for="name"></label>
+                            </div>
+                            <div class="group">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <input class="text1" name="Boy" type="text" placeholder="Boy" required="required" />
+                                <label for="name"></label>
+                            </div>
+                            <div class="group">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <input class="text1" name="Kilo" type="text" placeholder="Kilo" required="required" />
+                                <label for="name"></label>
+                            </div>
+                            <div class="group">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <input class="text1" name="Yas" type="text" placeholder="Yas" required="required" />
+                                <label for="name"></label>
+                            </div>
+
+                            <input type="submit" onclick="checkpass()" value="Kaydol" />
+                        </form>
+                    }
+                </div>
+
+
+
+
+                <div class="login">
+
+                    @using (Html.BeginForm("Login", "Member", FormMethod.Post))
+                    {
+
+
+                    <form method="post" name="register" action="login.jsp">
+
+
+
+                        <div class="group">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <input name="UserName" type="text" placeholder="Kullanıcı Adı" required="required" />
+                            <label for="name"></label>
+                        </div>
+                        <div class="group">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <input name="Password" type="password" placeholder="Şifre" required="required" />
+                            <label for="name"></label>
+                        </div>
+                        <br />
+                        <input type="submit" onclick="checkpass()" value="Giriş" />
+
+                    </form>
+                    }
+                </div>
+
+
+
+                @*<div class="reset">
+                    <p>Reset Your Password.</p>
+
+                    <form method="post" name="register" action="reset.jsp">
+                        <input class="field" name="email" type="email" placeholder="*myusername@domain.com" required />
+                        <input class="field" name="pass_old" type="password" placeholder="*Old Password" required />
+                        <input class="field" name="pass_new" type="password" placeholder="*New Password" required />
+                        <div class="btn">
+                            <input type="submit" value="Get New One !" />
+                        </div>
+                    </form>
+                </div>*@
+            </div>
+        </div>
+    
+
+
+
+    <script src=" https://code.jquery.com/jquery-3.3.1.min.js
+"></script>
+    <script>
+        $('#register').on('click', function () {
+            $('.register').siblings().hide();
+            $('.register').slideToggle();
+        });
+        $('#login').on('click', function () {
+            $('.login').siblings().hide();
+            $('.login').slideToggle();
+        });
+        $('#reset').on('click', function () {
+            $('.reset').siblings().hide();
+            $('.reset').slideToggle();
+        });
+
+
+    </script>
+</body>
+</html>

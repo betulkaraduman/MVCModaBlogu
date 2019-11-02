@@ -1,0 +1,1360 @@
+﻿@model IEnumerable<Trial.Models.DısOzellik>
+@{
+    ViewBag.Title = "OzellikDetay";
+}
+
+<html>
+<head>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #a a {
+            color: #551A8B;
+            margin-top: 1%;
+            margin-left: 1%;
+            float: left;
+            display: block;
+            color: #cf3030;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        #aralık {
+            height: 120px;
+        }
+
+        body {
+            font-family: 'lato',sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.5;
+            background-color: #e9cbcb;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+
+        .duzenle {
+            height: 425px;
+            margin-left: 15px;
+            margin-top: 70px;
+        }
+
+        .hizala {
+            margin-left: 40px;
+            margin-bottom: 20px;
+        }
+
+        .ayarla {
+            background-color: aqua;
+            margin-left: 70px;
+        }
+
+        .makyaj li {
+            text-decoration: none;
+            color: white;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .duzenle {
+            margin-top: 10px;
+        }
+
+
+
+        #mobile-nav {
+            display: none;
+            padding-left: 10px;
+            margin-top: 0;
+            width: 10%;
+        }
+
+        #top-bar {
+            margin-left: 12px;
+            margin-top: 25px;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+
+        #mobile-nav li {
+            margin-left: -4px;
+            padding-top: 15px;
+            list-style-type: none;
+            width: 150px;
+            display: block;
+            border-bottom: thin solid #e9cbcb;
+            border-top: none;
+            width: 48px;
+        }
+
+            #mobile-nav li:hover {
+                width: 150px;
+                background-color: #e97272;
+            }
+
+            #mobile-nav li a {
+                color: black;
+                font-weight: 700;
+                text-decoration: none;
+                display: block;
+                box-sizing: border-box;
+                width: 80%;
+                height: 100%;
+            }
+
+        #menu-button:hover {
+            cursor: pointer;
+        }
+
+
+        html {
+            font-size: 10px;
+        }
+
+        #aralık {
+            height: 120px;
+        }
+
+
+        .hizala {
+            width: 20%;
+            margin-left: 15%;
+        }
+
+        .duzenle {
+            height: 425px;
+            margin-left: 65px;
+            width: 20%;
+            float: left;
+            margin-top: 70px;
+        }
+
+        .comparison-slider {
+            margin-left: 130px;
+            position: relative;
+            width: 82%;
+            min-height: 42vw;
+            overflow: hidden;
+        }
+
+        .picture {
+            position: absolute;
+            width: 100vw;
+            min-height: 60vw;
+            overflow: hidden;
+        }
+
+        .picture__content-wrap {
+            position: absolute;
+            width: 100vw;
+            min-height: 60vw;
+        }
+
+        .picture__content {
+            position: absolute;
+            width: 25%;
+            top: 20%;
+            left: 7%;
+            padding: 2.5%;
+            text-align: center;
+            z-index: 41;
+        }
+
+        .picture--before .picture__content {
+            background-color: rgba(34, 34, 34, 0.75);
+            color: #fff;
+        }
+
+        .picture--after .picture__content {
+            background-color: rgba(240, 248, 255, 0.75);
+            color: #222;
+        }
+
+        .picture img {
+            position: absolute;
+            display: block;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .comparison-slider h3 {
+            font-family: "Kaushan Script", cursive;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .picture--before h3 {
+            color: #fff;
+        }
+
+        .picture--after h3 {
+            color: #214569;
+        }
+
+        .comparison-slider p {
+            font-family: "Tangerine", cursive;
+            font-size: 8px;
+        }
+
+        .picture--before {
+            z-index: 1;
+        }
+
+        .handle {
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            height: 120%;
+            width: 2px;
+            background-color: #214569;
+            transform: rotate(15deg) translateY(-50%);
+            transform-origin: top;
+            z-index: 3;
+        }
+
+        .picture--after {
+            transform: skew(-15deg);
+            margin-left: -2000px;
+            width: calc(50vw + 2000px);
+            z-index: 2;
+        }
+
+
+
+            .picture--after .picture__content-wrap {
+                transform: skew(15deg);
+                margin-left: 2000px;
+            }
+
+        .hizalam {
+            float: left;
+            height: 40px;
+            width: 70%;
+        }
+    </style>
+    <link href="~/Css/MakyajDetay.css" rel="stylesheet" />
+    <link href="~/Css/UyeIndex.css" rel="stylesheet" />
+    <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="widht=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <div class="hizalam">
+        <div class="container">
+            <div id="top-bar">
+                <img id="menu-button" src="http://mattdesimini.com/images/howtoweb/menu.png" style="width:34px">
+            </div>
+            <ul id="mobile-nav">
+                <li><a href="@Url.Action("MakyajOlustur","UyeDetay",new { id = Session["UserId"] })" style="margin-left:15px;margin-bottom:10px;">Makyaj</a></li>
+                <li><a href="@Url.Action("MarkaOlustur","UyeDetay",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="smoothScroll" style="margin-left:15px;margin-bottom:10px;">Markan</a></li>
+                <li><a href="@Url.Action("Begeni1","UyeDetay",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Begeni</a></li>
+                <li><a href="@Url.Action("Guncelle","Member",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Güncelle</a></li>
+                <li><a href="@Url.Action("BegeniGetirme","Member",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Kaydettiklerim</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="hizalam" style="margin-left:-610px; margin-top:30px;">
+
+        <a href="@Url.Action("Index","Member",new { id = Session["UserId"] })" class="smoothScroll" id="a" style="font-size:25px; margin-left:10px;margin-top:-15px; text-decoration:none;">Anasayfa</a>
+        <a href="@Url.Action("YorumEkle","Member",new {id=Session["UserId"]})" class="smoothScroll" id="a" style="font-size:25px; margin-left:40px;margin-top:-15px; text-decoration:none;">Yorum</a>
+        <a href="@Url.Action("Ozellik","Member",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="baslık" style="font-size:25px; margin-left:40px; text-decoration:none; margin-top:-14px;">Marka</a>
+        <a href="@Url.Action("Begeni","Member",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="baslık" style="font-size:25px; margin-left:40px; text-decoration:none; margin-top:-14px;">Kombinler</a>
+
+        <a href="@Url.Action("Cıkıs","Member")" class="baslık" style="font-size:25px; margin-left:40px; text-decoration:none; margin-top:-14px;" id="a">Cıkış</a>
+
+    </div>
+
+
+    @foreach (var item in Model)
+    {
+
+        if (ViewBag.UserId == item.UserId.ToString())
+        {
+            //Sarışın yeşil gözlğ
+            if (item.OzellikId == 1)
+            {
+                <div style="height:100px;width:100%;"></div>
+                <br />
+
+                <div class="hizala">
+                    <div style="height:650px; background-color:#e9cbcb;margin-right:20px; width:400px;">
+
+                        <div style="background-color:#e97272; height:50px; border-radius:10px;  ">
+                            <h2 style="color:white;margin-left:125px; padding-top:10px;">Ne Sürersin</h2>
+                        </div>
+
+                        <br />
+                        <div style="background-color:#e97272; margin-top:20px; height:553px; border-radius:10px; ">
+                            <br />
+                            <br />
+                            <ul class="makyaj" style="margin-left:30px; margin-right:20px;">
+                                <li style=" margin-top:10px;">
+                                    Göz makyajını yaparken yeşil gözü ortaya çıkaran makyaj tekniklerini kullanmalısın. Bunun için göz rengin ile kontrast yaratacak tonlar seçmende fayda var; gözlerinle aynı renk göz makyajı yaptırmamalısın
+                                </li>
+                                <br />
+                                <li style=" margin-top:10px;">
+                                    Yeşilin zıt rengi kırmızı olduğu için yeşil göz makyajında kırmızının tonlarını kullanmak gözlerini ön plana çıkarır.
+                                </li>
+                                <br />
+                                <li style=" margin-top:10px;">
+                                    Yeşil gözler için rimel ve göz kalemi rengi önerimiz; kahve tonlarda özellikle de çikolata kahvesi göz kalemi, eyeliner ve rimel.
+                                    Bunları kullanırsan bakışların yumuşar ve göz rengin ortaya çıkar. Böylece daha doğal bir görüntü yakalarsın.
+                                </li>
+                                <br />
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="resim1" style="margin-left:450px; margin-top:-650px;">
+                        <img src="~/Ten_goz/sarısın/374794cf-692a-483a-a94b-521b2e99ac61.jpg" style="height:310px; width:240px; border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:750px; margin-top:-315px;">
+                        <img src="~/Ten_goz/sarısın/4560dd19-7c61-48c7-97ec-52b5f04ce99e.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:450px;margin-top:20px;">
+                        <img src="~/Ten_goz/yesil/5555.PNG" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:750px; margin-top:-315px;">
+                        <img src="~/Ten_goz/yesil/images (1).jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+
+
+                </div>
+
+
+                <div style="background-color:#e97272; height:50px; border-radius:10px; margin-top:300px; width:73%;margin-left:200px;">
+                    <h2 style="color:white;margin-left:400px; padding-top:10px;">Neler giyinebilirsin</h2>
+                </div>
+
+
+                <div class="kıyafet" style="background-color:#e97272;height:300px; width :980px;margin-top:40px; margin-left:200px; border-radius:10px; ">
+
+                    <br />
+                    <ul style="margin-top:10px; margin-left:30px; margin-right:30px; color:white;">
+                        <li style="margin-top:5px;">
+                            - Kırmızı
+                            Pek çok sarışın kadın kıyafet alışverişi yaparken kırmızı kıyafetlere yönelir. Sizde özel davetlerde kırmızı bir elbise, siyah aksesuar ve dağınık bir topuz tercih edebilirsiniz.
+                        </li>
+                        <li style="margin-top:5px;">
+                            - Zümrüt yeşili
+                            Günlük hayatta fazla tercih edilmeyen zümrüt yeşilini özel davetlerde rahatlıkla kullanabilirsiniz.
+                            Zümrüt yeşilini sokak stiline uyarlamak istiyorsanız, son yıllarının en moda parçalarından olan bomber ceket olarak da tercih edebilirsiniz.
+                        </li>
+                        <li style="margin-top:5px;">
+                            - Klasik metalik
+                            Metalik renkler doğru kullanıldığı taktirde sarışın kadınlarda çok şık durur. Minik bir gümüş renkli elbiseyi beyaz topuklu ayakkabı ile kombinleyebilirsiniz.
+                        </li>
+                        <li style="margin-top:5px;">
+                            - Nude pembe
+                            Kombinlerinizde soft ve romantik bir hava yaratmak istiyorsanız, tercihinizi açık renkli pembelerden yana kullanabilirsiniz.
+                            Soft renkleri yaz aylarında elbise ya da gömlek olarak, kış aylarında ise kısa suni kürkleri tercih edebilirsiniz.
+                        </li>
+
+                    </ul>
+                </div>
+                <div style="height:100px;width:100%;"></div>
+
+            }
+
+            //sarışın mavi gözlü
+            else if (item.OzellikId == 2)
+            {
+
+                <div style="height:100px;width:100%;"></div>
+
+                <div class="hizala">
+                    <div class="makyaj" style="height:650px; background-color:#e9cbcb;margin-right:20px; width:360px;">
+                        <div style="background-color:#e97272; height:50px; border-radius:10px;  ">
+                            <h2 style="color:white;margin-left:100px; padding-top:10px;">Ne Sürebilirsin</h2>
+                        </div>
+
+                        <br />
+                        <div style="background-color:#e97272; margin-top:20px; height:553px; border-radius:10px; ">
+                            <br />
+                            <ul class="makyaj" style="margin-left:30px; margin-right:20px;">
+                                <li style=" margin-top:10px;">
+
+                                    Turuncu ve mavi, zıt renkler olduğu için, mavi göz makyajına en çok pembe, şeftali, yavruağzı gibi turuncu tonlarını yakıştırdığımızı söyleyerek başlayalım.
+                                    Romantik ve fresh bir görünüm için bu tonları tercih edebilirsin.
+                                </li>
+                                <li style=" margin-top:10px;">
+                                    Siyah eyelinerı göz şeklini bademe yaklaştıracak illüzyonlar için kullanabilirsin.
+                                    Mavi gözlü gelin adaylarına yakıştırdığımız rimel renklerinin siyah ve kahverengi olduğunu söyleyebiliriz.
+                                    Ayrıca kullanacağın rimelin rengi ile eyelinerın renginin uyumlu olması gerektiği konusunda da uyaralım
+                                </li>
+                                
+                                <li style=" margin-top:10px;">
+                                    Daha gizemli bir hava yaratmak istiyorsan gri, mor ya da toprak tonlarında dumanlı göz makyajını düşünebilirsin.
+                                    Bakışların etkileyici bir hava katacak koyu tonlar, özellikle çıkık gözlere derinlik katmak için ideal.
+                                </li>
+                                <br />
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="hizala">
+                    <div class="resim1" style="margin-left:400px; margin-top:-470px;">
+
+                        <img src="~/Ten_goz/sarısın/4.jpg" style="height:310px; width:240px; border-radius:10px;" />
+                    </div>
+
+                    <div class="resim1" style="margin-left:700px; margin-top:-315px;">
+                        <img src="~/Ten_goz/sarısın/51662855-d239-407e-a624-4396f58db35d.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+
+
+                    <div class="resim1" style="margin-left:400px;margin-top:25px;">
+                        <img src="~/Ten_goz/mavirenk/5be70cc6346af.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:700px; margin-top:-315px;">
+
+                        <img src="~/Ten_goz/mavirenk/indir.jpg" style="height:310px; width:240px; border-radius:10px;" />
+                    </div>
+                </div>
+
+                <div style="height:50px;"></div>
+                <div style="background-color:#e97272; height:50px; border-radius:10px; margin-top:200px;width:70%;margin-left:200px;">
+                    <h2 style="color:white;margin-left:400px; padding-top:10px;">Neler giyinebilirsin</h2>
+                </div>
+
+
+                <br />
+                <div style="background-color:#e97272;width:70%;margin-left:200px;">
+                    <br />
+                    <ul style="margin-top:10px; margin-left:30px; margin-right:30px; color:white;">
+
+                        <li style="margin-top:5px;">
+                            - Zümrüt yeşili
+                            Günlük hayatta fazla tercih edilmeyen zümrüt yeşilini özel davetlerde rahatlıkla kullanabilirsiniz.
+                            Zümrüt yeşilini sokak stiline uyarlamak istiyorsanız, son yıllarının en moda parçalarından olan bomber ceket olarak da tercih edebilirsiniz.
+                        </li>
+                        <li style="margin-top:5px;">
+                            - Siyah
+                            Siyah renk, her renk saç tipindeki kadınlara yakışır. Ancak sarışın kadınlarda daha şık durur. Siyah rengi her türlü renk ve parçayla kullanabilirsiniz.
+                        </li>
+                        <li style="margin-top:5px;">
+                            - Nude pembe
+                            Kombinlerinizde soft ve romantik bir hava yaratmak istiyorsanız, tercihinizi açık renkli pembelerden yana kullanabilirsiniz.
+                            Soft renkleri yaz aylarında elbise ya da gömlek olarak, kış aylarında ise kısa suni kürkleri tercih edebilirsiniz.
+                        </li>
+
+                    </ul>
+                    <br />
+                </div>
+
+
+
+
+
+
+                <div style="height:100px;width:100%;"></div> <div style="height:100px;width:100%;"></div>
+            }
+            //sarışın ela gözlü
+            else if (item.OzellikId == 3)
+            {
+                <div style="height:100px;width:100%;"></div>
+
+                    <div class="hizala">
+                        <div class="makyaj" style="height:650px; background-color:#e9cbcb;margin-right:20px; width:400px;">
+                            <div style="background-color:#e97272; height:50px; border-radius:10px;  ">
+                                <h2 style="color:white;margin-left:125px; padding-top:10px;">Ne Sürersin</h2>
+                            </div>
+                            <br />
+                            <div style="background-color:#e97272; margin-top:20px; height:553px; border-radius:10px; ">
+                                <br />
+                                <ul class="makyaj" style="margin-left:30px; margin-right:20px;">
+                                    <li style=" margin-top:10px;">
+                                        -  Ela gözler oldukça nadir bulunan göz renklerinden olduğu için eğer gözlerin elaysa çok şanslısın!
+                                        Bu muhteşem göz rengini belirginleştirmek için tabii ki dikkat çeken bir ela göz makyajı yapmak gerekir.
+                                    </li>
+                                    <li style=" margin-top:10px;">
+                                        - Göz pınarına ve gözünün dış kısmına kahve tonda göz farını, gözlerinin orta kısmına ise altın tonlarında göz farını uygulayarak bu göz makyajını kolayca oluşturabilirsin.
+                                        Ela göz makyajı tekniklerinde mutlaka ışıltılı rengi göz pınarlarına sürerek göz rengini ön plana çıkarmalısın.
+                                    </li>
+                                    <li style=" margin-top:10px;">
+                                        - Sen de fark ettiysen ela gözlerin yeşil tonda makyaj yaptığında yeşile,
+                                        kahve tonda makyaj yaptığında daha çok kahveye dönüyor!
+                                        İşte bu yeşil tarafını ortaya çıkartmak için yeşil göz farını gözünün iç kısımlarına ve alt kirpik diplerine, dış kısımlarına ve katlanma noktasına ise kahve tonda göz farını uygulayabilirsin.
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="resim1" style="margin-left:650px; margin-top:-470px;">
+                        <img src="~/Ten_goz/sarısın/c49ea0dd-960d-4423-ac88-d1ba03942b6c.jpg" style="height:310px; width:240px; border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                        <img src="~/Ten_goz/sarısın/51662855-d239-407e-a624-4396f58db35d.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:650px;margin-top:20px;">
+                        <img src="~/Ten_goz/ela/Ekran Alıntısı.PNG" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+
+                        <img src="~/Ten_goz/ela/5be70cc6366a9.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+                    <div style="background-color:#e97272; height:50px; border-radius:10px; margin-top:30px; width:73%;margin-left:200px;">
+                        <h2 style="color:white;margin-left:400px; padding-top:10px;">Neler giyinebilirsin</h2>
+                    </div>
+                <div class="kıyafet" style="background-color:#e97272;height:350px; width :980px;margin-top:40px; margin-left:200px; border-radius:10px; ">
+                    <br />
+                    <ul style="margin-top:10px; margin-left:30px; margin-right:30px; color:white;">
+                        <li style="margin-top:5px;">
+                            - Kırmızı
+                            Pek çok sarışın kadın kıyafet alışverişi yaparken kırmızı kıyafetlere yönelir. Sizde özel davetlerde kırmızı bir elbise, siyah aksesuar ve dağınık bir topuz tercih edebilirsiniz.
+                        </li>
+                        <br />
+                        <li style="margin-top:5px;">
+                            - Klasik metalik
+                            Metalik renkler doğru kullanıldığı taktirde sarışın kadınlarda çok şık durur. Minik bir gümüş renkli elbiseyi beyaz topuklu ayakkabı ile kombinleyebilirsiniz.
+                        </li>
+                        <br />
+                        <li style="margin-top:5px;">
+                            - Siyah
+                            Siyah renk, her renk saç tipindeki kadınlara yakışır. Ancak sarışın kadınlarda daha şık durur. Siyah rengi her türlü renk ve parçayla kullanabilirsiniz.
+                        </li>
+                        <br />
+                        <li style="margin-top:5px;">
+                            - Zümrüt yeşili
+                            Günlük hayatta fazla tercih edilmeyen zümrüt yeşilini özel davetlerde rahatlıkla kullanabilirsiniz.
+                            Zümrüt yeşilini sokak stiline uyarlamak istiyorsanız, son yıllarının en moda parçalarından olan bomber ceket olarak da tercih edebilirsiniz.
+                        </li>
+                        <br />
+
+                    </ul>
+                </div>
+
+                <div style="height:100px;width:100%;"></div>
+            }
+            //sarışın kahverengi gözlü
+            else if (item.OzellikId == 4)
+            {
+                <div style="height:100px;width:100%;"></div>
+
+
+                <div class="hizala">
+                    <div class="makyaj" style="height:650px; background-color:#e9cbcb;margin-right:20px; width:400px;">
+                        <div style="background-color:#e97272; height:50px; border-radius:10px;  ">
+                            <h2 style="color:white;margin-left:125px; padding-top:10px;">Ne Sürersin</h2>
+                        </div>
+                        <br />
+                        <div style="background-color:#e97272; margin-top:20px; height:553px; border-radius:10px; ">
+                            <br />
+
+                            <ul class="makyaj" style="margin-left:30px; margin-right:20px;">
+                                <li style=" margin-top:10px;">
+                                    Kahverengi gözlere sahip birçok kişi renkli gözlere sahip olmadığı için hayıflanır. Ancak durum hiç de dert yanılacak gibi değil!
+                                    Kahverengi gözlülerin kullanabileceği renkler çok daha fazla. Neredeyse her renk ile uyum sağlayan kahve gözleri, hangi renklerle öne çıkaracağını öğrenmek ister misin?
+                                </li>
+
+                                <li style=" margin-top:10px;">
+                                    Esmer bir kadına yakışan makyaj, sarışın bir kadında aynı etkiyi yaratmayacaktır. Aynı şekilde kadının yüz şekli de makyajını değiştiren etkenlerdendir.
+                                    Aynı durum göz makyajı için de geçerlidir.
+                                </li>
+                                <li style=" margin-top:10px;">
+                                    Öncelikle renk seçeneğiniz daha fazla olduğu için her kıyafetinize göre farklı bir makyaj uygulaması yapabilirsiniz.
+                                    Farklı etkinlikler için farklı makyaj uygulamalarıyla bulunduğunuz her ortamda dikkat çekici bir görünüme sahip olabilirsiniz.
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="resim1" style="margin-left:450px; margin-top:-650px;">
+                        <img src="~/Ten_goz/sarısın/c49ea0dd-960d-4423-ac88-d1ba03942b6c.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:750px; margin-top:-315px;">
+                        <img src="~/Ten_goz/sarısın/fe1b35bd-acef-4b59-a63c-0701a818cd62.jpg" style="height:310px; width:240px;   border-radius:10px;" />
+                    </div>
+
+                    <div class="resim1" style="margin-left:450px;margin-top:25px;">
+
+                        <img src="~/Ten_goz/kahverengi/images (2).jpg" style="height:310px; width:240px;   border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:750px; margin-top:-315px;">
+                        <img src="~/Ten_goz/kahverengi/indir (1).jpg" style="height:310px; width:240px;   border-radius:10px;" />
+                    </div>
+
+                </div>
+
+                <div style="background-color:#e97272; height:50px; border-radius:10px; margin-top:300px; width:73%;margin-left:200px;">
+                    <h2 style="color:white;margin-left:400px; padding-top:10px;">Neler giyinebilirsin</h2>
+                </div>
+                <div class="kıyafet" style="background-color:#e97272;height:300px; width :980px;margin-top:40px; margin-left:200px; border-radius:10px; ">
+                    <br />
+                    <ul style="margin-top:10px; margin-left:30px; margin-right:30px; color:white;">
+                        <li style="margin-top:5px;">
+                            - Kırmızı
+                            Pek çok sarışın kadın kıyafet alışverişi yaparken kırmızı kıyafetlere yönelir. Sizde özel davetlerde kırmızı bir elbise, siyah aksesuar ve dağınık bir topuz tercih edebilirsiniz.
+                        </li>
+                        <li style="margin-top:5px;">
+                            - Klasik metalik
+                            Metalik renkler doğru kullanıldığı taktirde sarışın kadınlarda çok şık durur. Minik bir gümüş renkli elbiseyi beyaz topuklu ayakkabı ile kombinleyebilirsiniz.
+                        </li>
+                        <li style="margin-top:5px;">
+                            - Nude pembe
+                            Kombinlerinizde soft ve romantik bir hava yaratmak istiyorsanız, tercihinizi açık renkli pembelerden yana kullanabilirsiniz.
+                            Soft renkleri yaz aylarında elbise ya da gömlek olarak, kış aylarında ise kısa suni kürkleri tercih edebilirsiniz.
+                        </li>
+
+                    </ul>
+                </div>
+                <div style="height:100px;width:100%;"></div>
+
+            }
+
+
+            //kumral yeşil göz
+            else if (item.OzellikId == 5)
+            {
+                <div style="height:100px;width:100%;"></div>
+
+                <div class="hizala">
+                    <div class="makyaj" style="height:650px; background-color:#e9cbcb;margin-right:20px; width:400px;">
+                        <div style="background-color:#e97272; height:50px; border-radius:10px;  ">
+                            <h2 style="color:white;margin-left:125px; padding-top:10px;">Ne Sürersin</h2>
+                        </div>
+                        <br />
+                        <div style="background-color:#e97272; margin-top:20px; height:553px; border-radius:10px; ">
+                            <br />
+
+                            <ul class="makyaj" style="margin-left:30px; margin-right:20px;">
+                                <li style=" margin-top:10px;">
+                                    Göz makyajını yaparken yeşil gözü ortaya çıkaran makyaj tekniklerini kullanmalısın. Bunun için göz rengin ile kontrast yaratacak tonlar seçmende fayda var; gözlerinle aynı renk göz makyajı yaptırmamalısın
+                                </li>
+                                <br />
+                                <li style=" margin-top:10px;">
+
+                                    Yeşilin zıt rengi kırmızı olduğu için yeşil göz makyajında kırmızının tonlarını kullanmak gözlerini ön plana çıkarır.
+                                </li>
+                                <br />
+                                <li style=" margin-top:10px;">
+
+                                    Yeşil gözler için rimel ve göz kalemi rengi önerimiz; kahve tonlarda özellikle de çikolata kahvesi göz kalemi, eyeliner ve rimel.
+                                    Bunları kullanırsan bakışların yumuşar ve göz rengin ortaya çıkar. Böylece daha doğal bir görüntü yakalarsın.
+                                </li>
+                                <br />
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resim1" style="margin-left:650px; margin-top:-470px;">
+
+                    <img src="~/Ten_goz/Kumral/33bc3feb-ba96-438e-b4eb-5cba37b98455.jpg" style="height:310px; width:240px; border-radius:10px;" />
+                </div>
+                <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                    <img src="~/Ten_goz/esmer/a2ef748d-5097-412d-aed1-412e4f65167d.jpg" style="height:310px; width:240px; border-radius:10px;" />
+                </div>
+
+                <div class="resim1" style="margin-left:650px;margin-top:20px;">
+                    <img src="~/Ten_goz/yesil/images (1).jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                </div>
+                <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                    <img src="~/Ten_goz/yesil/REDhNqpFS2knjxCG.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                </div>
+
+                <div style="background-color:#e97272; height:50px; border-radius:10px; margin-top:40px; width:73%;margin-left:200px;">
+                    <h2 style="color:white;margin-left:400px; padding-top:10px;">Neler giyinebilirsin</h2>
+                </div>
+
+
+                <div class="kıyafet" style="background-color:#e97272;height:300px; width :980px;margin-top:40px; margin-left:200px; border-radius:10px; ">
+                    <br />
+                    <ul style="margin-top:10px; margin-left:30px; margin-right:30px; color:white;">
+                        <li style="margin-top:5px;">
+                            en çok yakışan kıyafetlerin başında siyah renkli kıyafetler geliyor. Özellikle saçların küllü kumral tonlarındaysa bu rengi ön plana çıkarmak için siyah üstler giymelisin.
+                            Baştan aşağı siyah görünmek istemiyorsan siyah üstünün altına beyaz veya gri tonlarında kıyafetler ya da aksesuarlarında açık tonlar seçebilirsin.
+                            Siyah üstler, saçların için harika bir arka plan oluşturacağı için saç rengin olduğundan daha belirgin ve parlak görünecek.
+                        </li>
+                        <li style="margin-top:5px;">
+                            Kumral saç renginin sende yarattığı genç ve dinamik havayı desteklemek için spor tarzda giyinmeni öneriyoruz.
+                            Spor kıyafet dediğimizde aklına sadece tayt ve spor büstiyer gelmesin. Günlük hayatında kot pantolon, açık renkte kazaklar,
+                            spor ayakkabılar sana sportif şık bir görünüm sağlayabilir.
+                        </li>
+                        <li style="margin-top:5px;">
+                            kumralların en çok dikkat etmesi gereken konulardan biri de denge. Saç rengini ortaya çıkarmak istiyorsan karışık renkler yerine en fazla iki,
+                            üç rengi birleştirerek giymelisin. Yukarıdaki gibi siyah bluz ve kot, camel rengi kazak ve kot gibi uyumlu renkleri siyah ayakkabılarla karıştırarak hem daha şık görünebilir,
+                            hem de kumral saç renginle dikkatleri çekebilirsin.
+                        </li>
+
+                    </ul>
+                </div>
+
+            }
+            //kumral mavi göz
+            else if (item.OzellikId == 6)
+            {
+                <div style="height:100px;width:100%;"></div>
+
+                <div class="hizala">
+                    <div class="makyaj" style="height:650px; background-color:#e9cbcb;margin-right:20px; width:400px;">
+                        <div style="background-color:#e97272; height:50px; border-radius:10px;  ">
+                            <h2 style="color:white;margin-left:125px; padding-top:10px;">Ne Sürersin</h2>
+                        </div>
+                        <br />
+                        <div style="background-color:#e97272; margin-top:20px; height:553px; border-radius:10px; ">
+                            <br />
+                            <ul class="makyaj" style="margin-left:30px; margin-right:20px;">
+                                <li style=" margin-top:10px;">
+                                    Turuncu ve mavi, zıt renkler olduğu için, mavi göz makyajına en çok pembe, şeftali, yavruağzı gibi turuncu tonlarını yakıştırdığımızı söyleyerek başlayalım.
+                                    Romantik ve fresh bir görünüm için bu tonları tercih edebilirsin.
+                                </li>
+                                <br />
+                                <li style=" margin-top:10px;">
+                                    Siyah eyelinerı göz şeklini bademe yaklaştıracak illüzyonlar için kullanabilirsin.
+                                    Mavi gözlü gelin adaylarına yakıştırdığımız rimel renklerinin siyah ve kahverengi olduğunu söyleyebiliriz.
+                                    Ayrıca kullanacağın rimelin rengi ile eyelinerın renginin uyumlu olması gerektiği konusunda da uyaralım
+                                </li>
+                                <br />
+                                <li style=" margin-top:10px;">
+                                    Daha gizemli bir hava yaratmak istiyorsan gri, mor ya da toprak tonlarında dumanlı göz makyajını düşünebilirsin.
+                                    Bakışların etkileyici bir hava katacak koyu tonlar, özellikle çıkık gözlere derinlik katmak için ideal.
+                                </li>
+                                <br />
+
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="resim1" style="margin-left:650px; margin-top:-470px;">
+
+                    <img src="~/Ten_goz/Kumral/15cce1ce-3a8b-44ff-b866-4c46d7167365.jpg" style="height:310px; width:240px; border-radius:10px;" />
+                </div>
+                <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+
+                    <img src="~/Ten_goz/Kumral/64d0388a-e6f4-49c6-b151-fd7ebb588384.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                </div>
+
+                <div class="resim1" style="margin-left:650px;margin-top:20px;">
+                    <img src="~/Ten_goz/mavirenk/aaaa.PNG" style="height:310px; width:240px;  border-radius:10px;" />
+                </div>
+                <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                    <img src="~/Ten_goz/mavirenk/420-makyajini-mavi-gozlerine-adapte-et-658x0-2.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                </div>
+
+                <div style="background-color:#e97272; height:50px; border-radius:10px; margin-top:40px; width:73%;margin-left:200px;">
+                    <h2 style="color:white;margin-left:400px; padding-top:10px;">Neler giyinebilirsin</h2>
+                </div>
+
+
+                <div class="kıyafet" style="background-color:#e97272;height:300px; width :980px;margin-top:40px; margin-left:200px; border-radius:10px; ">
+                    <br />
+                    <ul style="margin-top:10px; margin-left:30px; margin-right:30px; color:white;">
+                        <li style="margin-top:5px;">
+                            kumrallara genellikle koyu renkler yakışıyor.
+                            Bu nedenle renkli giyinmek istediğin günlerde lacivert, bordo, kiremit tonları gibi renklerin olduğu kıyafetleri tercih edebilirsin.
+                            Özellikle ekose deseninin içindeki renkler saç rengine çok yakışacak. İlla ki canlı renkler giymek istiyorsan koyu renkli ceketinin veya montunun içine giyebilirsin.
+                            Önemli olan saçlarının arka planının nasıl göründüğü.
+                        </li>
+                        <li style="margin-top:5px;">
+                            Kumral saç renginin sende yarattığı genç ve dinamik havayı desteklemek için spor tarzda giyinmeni öneriyoruz.
+                            Spor kıyafet dediğimizde aklına sadece tayt ve spor büstiyer gelmesin. Günlük hayatında kot pantolon, açık renkte kazaklar,
+                            spor ayakkabılar sana sportif şık bir görünüm sağlayabilir.
+                        </li>
+                        <li style="margin-top:5px;">
+                            kumralların en çok dikkat etmesi gereken konulardan biri de denge. Saç rengini ortaya çıkarmak istiyorsan karışık renkler yerine en fazla iki,
+                            üç rengi birleştirerek giymelisin. Yukarıdaki gibi siyah bluz ve kot, camel rengi kazak ve kot gibi uyumlu renkleri siyah ayakkabılarla karıştırarak hem daha şık görünebilir,
+                            hem de kumral saç renginle dikkatleri çekebilirsin.
+                        </li>
+
+                    </ul>
+                </div>
+            }
+            //kumral ela göz
+            else if (item.OzellikId == 7)
+            {
+                <div style="height:100px;width:100%;"></div>
+
+                <div class="hizala">
+                    <div class="makyaj" style="height:650px; background-color:#e9cbcb;margin-right:20px; width:400px;">
+                        <div style="background-color:#e97272; height:50px; border-radius:10px;  ">
+                            <h2 style="color:white;margin-left:125px; padding-top:10px;">Ne Sürersin</h2>
+                        </div>
+                        <br />
+                        <div style="background-color:#e97272; margin-top:20px; height:553px; border-radius:10px; ">
+                            <br />
+                            <ul class="makyaj" style="margin-left:30px; margin-right:20px;">
+                                <li style=" margin-top:10px;">
+                                    -  Ela gözler oldukça nadir bulunan göz renklerinden olduğu için eğer gözlerin elaysa çok şanslısın! Bu muhteşem göz rengini belirginleştirmek için tabii ki dikkat çeken bir ela göz makyajı yapmak gerekir.
+                                    Sen de ela gözlere sahipsen senin için önerdiğmiz ela göz makyajı stillerini deneyerek harika makyajlara imza atabilirsin.
+                                </li>
+                                <br />
+                                @*<li style=" margin-top:10px;">
+                                    - Göz pınarına ve gözünün dış kısmına kahve tonda göz farını, gözlerinin orta kısmına ise altın tonlarında göz farını uygulayarak bu göz makyajını kolayca oluşturabilirsin.
+                                    Ela göz makyajı tekniklerinde mutlaka ışıltılı rengi göz pınarlarına sürerek göz rengini ön plana çıkarmalısın.
+                                </li>*@
+                                <br />
+                                <li style=" margin-top:10px;">
+                                    - Ela göze yakışan makyaj örneklerinin başında yeşil tonları geliyor. Sen de fark ettiysen ela gözlerin yeşil tonda makyaj yaptığında yeşile,
+                                    kahve tonda makyaj yaptığında daha çok kahveye dönüyor! İşte bu yeşil tarafını ortaya çıkartmak için yeşil göz farını gözünün iç kısımlarına ve alt kirpik diplerine, dış kısımlarına ve katlanma noktasına ise kahve tonda göz farını uygulayabilirsin.
+                                </li>
+                                <br />
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resim1" style="margin-left:650px; margin-top:-470px;">
+
+                    <img src="~/Ten_goz/Kumral/15cce1ce-3a8b-44ff-b866-4c46d7167365.jpg" style="height:310px; width:240px; border-radius:10px;" />
+                </div>
+                <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+
+                    <img src="~/Ten_goz/Kumral/33bc3feb-ba96-438e-b4eb-5cba37b98455.jpg" style="height:310px; width:240px;   border-radius:10px;" />
+                </div>
+                <div class="resim1" style="margin-left:650px;margin-top:20px;">
+                    <img src="~/Ten_goz/ela/5be70cc6357ab.jpg" style="height:310px; width:240px;   border-radius:10px;" />
+                </div>
+                <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                    <img src="~/Ten_goz/ela/Ekran Alıntısı.PNG" style="height:310px; width:240px;   border-radius:10px;" />
+                </div>
+                <div style="background-color:#e97272; height:50px; border-radius:10px; margin-top:40px; width:73%;margin-left:200px;">
+                    <h2 style="color:white;margin-left:400px; padding-top:10px;">Neler giyinebilirsin</h2>
+                </div>
+
+
+                <div class="kıyafet" style="background-color:#e97272;height:300px; width :980px;margin-top:40px; margin-left:200px; border-radius:10px; ">
+                    <br />
+                    <ul style="margin-top:10px; margin-left:30px; margin-right:30px; color:white;">
+                        <li style="margin-top:5px;">
+                            kumrallara genellikle koyu renkler yakışıyor.
+                            Bu nedenle renkli giyinmek istediğin günlerde lacivert, bordo, kiremit tonları gibi renklerin olduğu kıyafetleri tercih edebilirsin.
+                            Özellikle ekose deseninin içindeki renkler saç rengine çok yakışacak. İlla ki canlı renkler giymek istiyorsan koyu renkli ceketinin veya montunun içine giyebilirsin.
+                            Önemli olan saçlarının arka planının nasıl göründüğü.
+                        </li>
+                        <li style="margin-top:5px;">
+                            Kumral saç renginin sende yarattığı genç ve dinamik havayı desteklemek için spor tarzda giyinmeni öneriyoruz.
+                            Spor kıyafet dediğimizde aklına sadece tayt ve spor büstiyer gelmesin. Günlük hayatında kot pantolon, açık renkte kazaklar,
+                            spor ayakkabılar sana sportif şık bir görünüm sağlayabilir.
+                        </li>
+                        <li style="margin-top:5px;">
+                            En çok yakışan kıyafetlerin başında siyah renkli kıyafetler geliyor.
+                            Özellikle saçların küllü kumral tonlarındaysa bu rengi ön plana çıkarmak için siyah üstler giymelisin.
+                                </li>
+
+                    </ul>
+                </div>
+            }
+            //kumral kahverengi göz
+            else if (item.OzellikId == 8)
+            {
+                <div style="height:100px;width:100%;"></div>
+
+                    <div class="hizala">
+                        <div class="makyaj" style="height:650px; background-color:#e9cbcb;margin-right:20px; width:400px;">
+                            <div style="background-color:#e97272; height:50px; border-radius:10px;  ">
+                                <h2 style="color:white;margin-left:125px; padding-top:10px;">Ne Sürersin</h2>
+                            </div>
+                            <br />
+                            <div style="background-color:#e97272; margin-top:20px; height:553px; border-radius:10px; ">
+                                <br />
+                                <ul class="makyaj" style="margin-left:30px; margin-right:20px;">
+                                    <li style=" margin-top:10px;">
+                                        Kahverengi gözlere sahip birçok kişi renkli gözlere sahip olmadığı için hayıflanır. Ancak durum hiç de dert yanılacak gibi değil!
+                                        Kahverengi gözlülerin kullanabileceği renkler çok daha fazla. Neredeyse her renk ile uyum sağlayan kahve gözleri, hangi renklerle öne çıkaracağını öğrenmek ister misin?
+                                    </li>
+                                    <br />
+                                    <li style=" margin-top:10px;">
+                                        Esmer bir kadına yakışan makyaj, sarışın bir kadında aynı etkiyi yaratmayacaktır. Aynı şekilde kadının yüz şekli de makyajını değiştiren etkenlerdendir.
+                                        Aynı durum göz makyajı için de geçerlidir.
+                                    </li>
+                                    <br />
+                                    <li style=" margin-top:10px;">
+                                        Öncelikle renk seçeneğiniz daha fazla olduğu için her kıyafetinize göre farklı bir makyaj uygulaması yapabilirsiniz.
+                                        Farklı etkinlikler için farklı makyaj uygulamalarıyla bulunduğunuz her ortamda dikkat çekici bir görünüme sahip olabilirsiniz.
+                                    </li>
+                                    <br />
+                                </ul>
+
+
+                            </div>
+                        </div>
+                    <div class="resim1" style="margin-left:450px; margin-top:-650px;">
+
+                        <img src="~/Ten_goz/Kumral/15cce1ce-3a8b-44ff-b866-4c46d7167365.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:750px; margin-top:-315px;">
+
+                        <img src="~/Ten_goz/Kumral/44d526c3-aa72-4219-a03f-1e647f6168b0.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+
+                    <div class="resim1" style="margin-left:450px;margin-top:25px;">
+
+                        <img src="~/Ten_goz/kahverengi/Ekran Alıntısı.PNG44.PNG" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:750px; margin-top:-315px;">
+                        <img src="~/Ten_goz/kahverengi/images (2).jpg" style="height:310px; width:240px;   border-radius:10px;" />
+                    </div>
+
+
+                
+                </div>
+
+
+                    <div style="background-color:#e97272; height:50px; border-radius:10px; margin-top:350px; width:73%;margin-left:200px;">
+                        <h2 style="color:white;margin-left:400px; padding-top:10px;">Neler giyinebilirsin</h2>
+                    </div>
+
+
+                <div class="kıyafet" style="background-color:#e97272;height:340px; width :980px;margin-top:40px; margin-left:200px; border-radius:10px; ">
+                    <br />
+                    <ul style="margin-top:10px; margin-left:30px; margin-right:30px; color:white;">
+                        <li style="margin-top:5px;">
+                            kumrallara genellikle koyu renkler yakışıyor.
+                            Bu nedenle renkli giyinmek istediğin günlerde lacivert, bordo, kiremit tonları gibi renklerin olduğu kıyafetleri tercih edebilirsin.
+                            Özellikle ekose deseninin içindeki renkler saç rengine çok yakışacak. İlla ki canlı renkler giymek istiyorsan koyu renkli ceketinin veya montunun içine giyebilirsin.
+                            Önemli olan saçlarının arka planının nasıl göründüğü.
+                        </li>
+                        <li style="margin-top:5px;">
+                            kumralların en çok dikkat etmesi gereken konulardan biri de denge. Saç rengini ortaya çıkarmak istiyorsan karışık renkler yerine en fazla iki,
+                            üç rengi birleştirerek giymelisin. Yukarıdaki gibi siyah bluz ve kot, camel rengi kazak ve kot gibi uyumlu renkleri siyah ayakkabılarla karıştırarak hem daha şık görünebilir,
+                            hem de kumral saç renginle dikkatleri çekebilirsin.
+                        </li>
+                        <li style="margin-top:5px;">
+                            En çok yakışan kıyafetlerin başında siyah renkli kıyafetler geliyor.
+                            Özellikle saçların küllü kumral tonlarındaysa bu rengi ön plana çıkarmak için siyah üstler giymelisin.
+                            Baştan aşağı siyah görünmek istemiyorsan siyah üstünün altına beyaz veya gri tonlarında kıyafetler ya da aksesuarlarında açık tonlar seçebilirsin.
+                            Siyah üstler, saçların için harika bir arka plan oluşturacağı için saç rengin olduğundan daha belirgin ve parlak görünecek.
+                        </li>
+
+                    </ul>
+                </div>
+            }
+
+            //esmer yeşil gözlü
+            else if (item.OzellikId == 9)
+            {
+
+                <div style="height:100px;width:100%;"></div>
+                <div class="hizala">
+                    <div class="makyaj" style="height:650px; background-color:#e9cbcb;margin-right:20px; width:400px;">
+                        <div style="background-color:#e97272; height:50px; border-radius:10px;  ">
+                            <h2 style="color:white;margin-left:125px; padding-top:10px;">Ne Sürersin</h2>
+                        </div>
+                        <br />
+                        <div style="background-color:#e97272; margin-top:20px; height:553px; border-radius:10px; ">
+                            <br />
+                            <ul class="makyaj" style="margin-left:30px; margin-right:20px;">
+                                <li style=" margin-top:10px;">
+                                    Göz makyajını yaparken yeşil gözü ortaya çıkaran makyaj tekniklerini kullanmalısın. Bunun için göz rengin ile kontrast yaratacak tonlar seçmende fayda var; gözlerinle aynı renk göz makyajı yaptırmamalısın
+                                </li>
+                                <br />
+                                <li style=" margin-top:10px;">
+
+                                    Yeşilin zıt rengi kırmızı olduğu için yeşil göz makyajında kırmızının tonlarını kullanmak gözlerini ön plana çıkarır.
+
+                                </li>
+                                <br />
+                                <li style=" margin-top:10px;">
+
+                                    Yeşil gözler için rimel ve göz kalemi rengi önerimiz; kahve tonlarda özellikle de çikolata kahvesi göz kalemi, eyeliner ve rimel.
+                                    Bunları kullanırsan bakışların yumuşar ve göz rengin ortaya çıkar. Böylece daha doğal bir görüntü yakalarsın.
+                                </li>
+                                <br />
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resim1" style="margin-left:650px; margin-top:-470px;">
+                    <img src="~/Ten_goz/esmer/32ea85f5-8036-4b70-b699-8fdba72a6bf1.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                </div>
+                <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                    <img src="~/Ten_goz/esmer/a2ef748d-5097-412d-aed1-412e4f65167d.jpg" style="height:310px; width:240px;   border-radius:10px;" />
+                </div>
+                <div class="resim1" style="margin-left:650px;margin-top:25px;">
+                    <img src="~/Ten_goz/yesil/5555.PNG" style="height:310px; width:240px;   border-radius:10px;" />
+                </div>
+                <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                    <img src="~/Ten_goz/yesil/images.jpg" style="height:310px; width:240px;   border-radius:10px;" />
+                </div>
+
+                <div style="background-color:#e97272; height:50px; border-radius:10px; margin-top:40px; width:73%;margin-left:200px;">
+                    <h2 style="color:white;margin-left:400px; padding-top:10px;">Neler giyinebilirsin</h2>
+                </div>
+
+
+                <div class="kıyafet" style="background-color:#e97272;height:300px; width :980px;margin-top:40px; margin-left:200px; border-radius:10px; ">
+                    <br />
+                    <ul style="margin-top:10px; margin-left:30px; margin-right:30px; color:white;">
+                        <li style="margin-top:5px;">
+                            Pastellerden parlak tonlara kadar pek çok renk esmerlere çok yakışır. Üstelik renklerin en iyi göründüğü ciltler de genelde esmerdir.
+                            Lafı uzatmayalım, esmerlere gidecek en iyi renklere bakalım.
+                        </li>
+                        <li style="margin-top:5px;">
+                            Beyaz ve krem rengi kıyafetlerle koyu renk saçınız ve teniniz ortaya çıkar. Son derece zarif görünmenizi sağlayacak bu renkler sizi canlı gösterir.
+                            Özellikle önemli günlerde bir elbise tercih edeceğinizde bu renklerin basit ama etkili zarafetine kendinizi bırakabilirsiniz.
+                        </li>
+                        <li style="margin-top:5px;">
+                            Açık sarı bir sarışının kolayca giyebileceği bir renk değildir.
+                            Ancak siz bu rengi dilediğinizce kullanabilirsiniz. Üzerine süreceğiniz şeftali tonlarında bir rujla teninizi ve saç renginizi öne çıkaracaktır.
+                            Ayrıca sarının bir yaz rengi olduğunu düşünüyorsanız yanılıyorsunuz. Kışın da dolabınızda sarı bir parçanız mutlaka olsun
+                        </li>
+
+                    </ul>
+                </div>
+            }//esmer mavi gözlü
+            else if (item.OzellikId == 10)
+            {
+                <div style="height:100px;width:100%;"></div>
+                <div class="hizala">
+                    <div class="makyaj" style="height:650px; background-color:#e9cbcb;margin-right:20px; width:400px;">
+                        <div style="background-color:#e97272; height:50px; border-radius:10px;  ">
+                            <h2 style="color:white;margin-left:125px; padding-top:10px;">Ne Sürersin</h2>
+                        </div>
+                        <br />
+                        <div style="background-color:#e97272; margin-top:20px; height:553px; border-radius:10px; ">
+                            <br />
+                            <ul class="makyaj" style="margin-left:30px; margin-right:20px;">
+                                <li style=" margin-top:10px;">
+                                    Turuncu ve mavi, zıt renkler olduğu için, mavi göz makyajına en çok pembe, şeftali, yavruağzı gibi turuncu tonlarını yakıştırdığımızı söyleyerek başlayalım.
+                                    Romantik ve fresh bir görünüm için bu tonları tercih edebilirsin.
+                                </li>
+                                <br />
+                                <li style=" margin-top:10px;">
+                                    Siyah eyelinerı göz şeklini bademe yaklaştıracak illüzyonlar için kullanabilirsin.
+                                    Mavi gözlü gelin adaylarına yakıştırdığımız rimel renklerinin siyah ve kahverengi olduğunu söyleyebiliriz.
+                                    Ayrıca kullanacağın rimelin rengi ile eyelinerın renginin uyumlu olması gerektiği konusunda da uyaralım
+                                </li>
+                                <br />
+                                <li style=" margin-top:10px;">
+                                    Daha gizemli bir hava yaratmak istiyorsan gri, mor ya da toprak tonlarında dumanlı göz makyajını düşünebilirsin.
+                                    Bakışların etkileyici bir hava katacak koyu tonlar, özellikle çıkık gözlere derinlik katmak için ideal.
+                                </li>
+                                <br />
+
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="resim1" style="margin-left:650px; margin-top:-470px;">
+                    <img src="~/Ten_goz/esmer/f590ccd1-f8c3-4627-bfa0-4587f7788232.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                </div>
+
+                <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                    <img src="~/Ten_goz/esmer/a2ef748d-5097-412d-aed1-412e4f65167d.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                </div>
+                <div class="resim1" style="margin-left:650px;margin-top:25px;">
+
+                    <img src="~/Ten_goz/mavirenk/aaaa.PNG" style="height:310px; width:240px;   border-radius:10px;" />
+                </div>
+                <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                    <img src="~/Ten_goz/mavirenk/indir.jpg" style="height:310px; width:240px;   border-radius:10px;" />
+                </div>
+
+
+
+
+
+                <div style="background-color:#e97272; height:50px; border-radius:10px; margin-top:40px; width:73%;margin-left:200px;">
+                    <h2 style="color:white;margin-left:400px; padding-top:10px;">Neler giyinebilirsin</h2>
+                </div>
+
+
+                <div class="kıyafet" style="background-color:#e97272;height:300px; width :980px;margin-top:40px; margin-left:200px; border-radius:10px; ">
+                    <br />
+                    <ul style="margin-top:10px; margin-left:30px; margin-right:30px; color:white;">
+                        <li style="margin-top:5px;">
+                            Pastellerden parlak tonlara kadar pek çok renk esmerlere çok yakışır. Üstelik renklerin en iyi göründüğü ciltler de genelde esmerdir.
+                            Lafı uzatmayalım, esmerlere gidecek en iyi renklere bakalım.
+                        </li>
+                        <li style="margin-top:5px;">
+                            Saçlarınız koyu renk diye hep patlatacak açık renklere yöneleceksiniz diye bir kural yok. Tam tersine lacivert gibi ağırlığı olan koyu bir renk sizi çok başka bir çizgiye taşıyacaktır.
+                            Lacivert elbisenizin üzerine kırmızı bir de ruj sürün. Dünyanın en stil sahibi esmeri sizsiniz.
+                        </li>
+                        <li style="margin-top:5px;">
+                            Açık sarı bir sarışının kolayca giyebileceği bir renk değildir.
+                            Ancak siz bu rengi dilediğinizce kullanabilirsiniz. Üzerine süreceğiniz şeftali tonlarında bir rujla teninizi ve saç renginizi öne çıkaracaktır.
+                            Ayrıca sarının bir yaz rengi olduğunu düşünüyorsanız yanılıyorsunuz. Kışın da dolabınızda sarı bir parçanız mutlaka olsun
+                        </li>
+
+                    </ul>
+                </div>
+
+            }//esmer  ela göz
+            else if (item.OzellikId == 11)
+            {
+                <div style="height:100px;width:100%;"></div>
+                   <div class="hizala" style="background-color:#e9cbcb;">
+                        
+                       <div class="makyaj" style="height:650px; background-color:#e9cbcb;margin-right:20px; width:400px;">
+
+                           <div style="background-color:#e97272; height:50px; border-radius:10px;  ">
+                               <h2 style="color:white;margin-left:125px; padding-top:10px;">Ne Sürersin</h2>
+                           </div>
+                           <br />
+                           <div style="background-color:#e97272; margin-top:20px; height:553px; border-radius:10px; ">
+
+                               <ul class="makyaj" style="margin-left:30px; margin-right:20px;">
+                                   <br />
+                                   <li style=" margin-top:10px;">
+                                       Siyah eyelinerı göz şeklini bademe yaklaştıracak illüzyonlar için kullanabilirsin.
+                                       Mavi gözlü gelin adaylarına yakıştırdığımız rimel renklerinin siyah ve kahverengi olduğunu söyleyebiliriz.
+                                                    </li>
+                               
+                                   <li style=" margin-top:10px;">
+                                       Göz pınarına ve gözünün dış kısmına kahve tonda göz farını, gözlerinin orta kısmına ise altın tonlarında göz farını uygulayarak bu göz makyajını kolayca oluşturabilirsin.
+                                       Ela göz makyajı tekniklerinde mutlaka ışıltılı rengi göz pınarlarına sürerek göz rengini ön plana çıkarmalısın.
+                                   </li>
+                                   <li style=" margin-top:10px;">
+                                       Ela göze yakışan makyaj örneklerinin başında yeşil tonları geliyor. Sen de fark ettiysen ela gözlerin yeşil tonda makyaj yaptığında yeşile, kahve tonda makyaj yaptığında daha çok kahveye dönüyor! İşte bu yeşil tarafını ortaya çıkartmak için yeşil göz farını gözünün iç kısımlarına ve alt kirpik diplerine,
+                                       dış kısımlarına ve katlanma noktasına ise kahve tonda göz farını uygulayabilirsin.
+                                   </li>
+                                   <br />
+                               </ul>
+                           </div>
+                           </div>
+                       </div>
+
+
+                    <div class="resim1" style="margin-left:650px; margin-top:-470px;">
+                        <img src="~/Ten_goz/esmer/45f0ab33-181d-42db-bde1-d0e0e1460d12.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+                    
+
+                        <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                            <img src="~/Ten_goz/esmer/a2ef748d-5097-412d-aed1-412e4f65167d.jpg" style="height:310px; width:240px;   border-radius:10px;" />
+                        </div>
+                        <div class="resim1" style="margin-left:650px;margin-top:25px;">
+
+                            <img src="~/Ten_goz/ela/5be70cc6366a9.jpg" style="height:310px; width:240px; border-radius:10px;" />
+                        </div>
+                        <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                            <img src="~/Ten_goz/ela/Ekran Alıntısı.PNG" style="height:310px; width:240px;   border-radius:10px;" />
+                        </div>
+                
+
+                        <div style="background-color:#e97272; height:50px; border-radius:10px; margin-top:40px; width:73%;margin-left:200px;">
+                            <h2 style="color:white;margin-left:400px; padding-top:10px;">Neler giyinebilirsin</h2>
+                        </div>
+
+
+                <div class="kıyafet" style="background-color:#e97272;height:300px; width :980px;margin-top:40px; margin-left:200px; border-radius:10px; ">
+                    <br />
+                    <ul style="margin-top:10px; margin-left:30px; margin-right:30px; color:white;">
+                        <li style="margin-top:5px;">
+                            Pastellerden parlak tonlara kadar pek çok renk esmerlere çok yakışır. Üstelik renklerin en iyi göründüğü ciltler de genelde esmerdir.
+                            Lafı uzatmayalım, esmerlere gidecek en iyi renklere bakalım.
+                        </li>
+                        <li style="margin-top:5px;">
+                            Ve tabii ki kırmızı… Kırmızı renk esmerde mi yoksa sarışında mı daha iyi duruyor bunun bir cevabı yok ama önemi de yok.
+                            Çünkü kırmızı koyu renk saç ve tende adeta sarsıcı bir etki yaratıyor, orası kesin. Kırmızı kıyafetinizin üzerine bir de kırmızı ruj eklemeyi unutmayın.
+                            Kolayca etkileyici birine dönüşeceksiniz.
+
+                        </li>
+                        <li style="margin-top:5px;">
+                            Açık sarı bir sarışının kolayca giyebileceği bir renk değildir.
+                            Ancak siz bu rengi dilediğinizce kullanabilirsiniz. Üzerine süreceğiniz şeftali tonlarında bir rujla teninizi ve saç renginizi öne çıkaracaktır.
+                            Ayrıca sarının bir yaz rengi olduğunu düşünüyorsanız yanılıyorsunuz. Kışın da dolabınızda sarı bir parçanız mutlaka olsun
+                        </li>
+
+                    </ul>
+                </div>
+            }
+            //esmer kahverengi gözlü
+            else
+            {
+                <div style="height:100px;width:100%;"></div>
+                  <div class="hizala">
+                        <div class="makyaj" style="height:650px; background-color:#e9cbcb;margin-right:20px; width:400px;">
+                            <div style="background-color:#e97272; height:50px; border-radius:10px;  ">
+                                <h2 style="color:white;margin-left:125px; padding-top:10px;">Ne Sürersin</h2>
+                            </div>
+                            <div style="background-color:#e97272; margin-top:20px; height:553px; border-radius:10px; ">
+                                <br />
+                                <ul class="makyaj" style="margin-left:30px; margin-right:20px;">
+                                    <li style=" margin-top:10px;">
+                                        Kahverengi gözlere sahip birçok kişi renkli gözlere sahip olmadığı için hayıflanır. Ancak durum hiç de dert yanılacak gibi değil!
+                                        Kahverengi gözlülerin kullanabileceği renkler çok daha fazla. Neredeyse her renk ile uyum sağlayan kahve gözleri, hangi renklerle öne çıkaracağını öğrenmek ister misin?
+                                    </li>
+                                    <br />
+                                    <li style=" margin-top:10px;">
+                                        Kahverengi gözlerle hemen her renkte far, iyi bir ikili oluşturuyor. Ancak gözlerini daha belirgin ve vurgulu hale getirmek için; yeşil ve bakırın tonları, kahverengi, siyah, lacivert ile beyazdan yararlanabilirsin.
+                                    </li>
+                                    <br />
+                                    <li style=" margin-top:10px;">
+                                        Öncelikle renk seçeneğiniz daha fazla olduğu için her kıyafetinize göre farklı bir makyaj uygulaması yapabilirsiniz.
+                                        Farklı etkinlikler için farklı makyaj uygulamalarıyla bulunduğunuz her ortamda dikkat çekici bir görünüme sahip olabilirsiniz.
+                                    </li>
+                                    <br />
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="resim1" style="margin-left:650px; margin-top:-470px;">
+                        <img src="~/Ten_goz/esmer/45f0ab33-181d-42db-bde1-d0e0e1460d12.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                        <img src="~/Ten_goz/esmer/0bcffbf7-79ac-4dff-ba19-8ec958bf7840.jpg" style="height:310px; width:240px;  border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:650px;margin-top:25px;">
+                        <img src="~/Ten_goz/kahverengi/images (2).jpg" style="height:310px; width:240px;   border-radius:10px;" />
+                    </div>
+                    <div class="resim1" style="margin-left:950px; margin-top:-315px;">
+                        <img src="~/Ten_goz/kahverengi/indir (1).jpg" style="height:310px; width:240px;   border-radius:10px;" />
+                    </div>
+                    <div style="background-color:#e97272; height:50px; border-radius:10px; margin-top:40px; width:73%;margin-left:200px;">
+                        <h2 style="color:white;margin-left:400px; padding-top:10px;">Neler giyinebilirsin</h2>
+                    </div>
+
+
+                <div class="kıyafet" style="background-color:#e97272;height:300px; width :980px;margin-top:40px; margin-left:200px; border-radius:10px; ">
+                    <br />
+                    <ul style="margin-top:10px; margin-left:30px; margin-right:30px; color:white;">
+                        <li style="margin-top:5px;">
+
+                            - Saçlarınız koyu renk diye hep patlatacak açık renklere yöneleceksiniz diye bir kural yok. Tam tersine lacivert gibi ağırlığı olan koyu bir renk sizi çok başka bir çizgiye taşıyacaktır.
+                            Lacivert elbisenizin üzerine kırmızı bir de ruj sürün. Dünyanın en stil sahibi esmeri sizsiniz.
+                        </li>
+                        <li style="margin-top:5px;">
+                            Esmer bir teni ve kahverengi tonlarda saçları ortaya çıkarmanın en iyi yolu sıcak tonlarda pembeler kullanmaktır.
+                            Bu pembe renk hem cildinize istediğiniz yumuşaklığı verir hem de ön plana çıkmanızı sağlar.
+                            Bu nedenle eğer esmer bir güzelseniz dolabınızda mutlaka sıcak pembelere yer vermelisiniz.
+
+                        </li>
+                        <li style="margin-top:5px;">
+                            Açık sarı bir sarışının kolayca giyebileceği bir renk değildir.
+                            Ancak siz bu rengi dilediğinizce kullanabilirsiniz. Üzerine süreceğiniz şeftali tonlarında bir rujla teninizi ve saç renginizi öne çıkaracaktır.
+                            Ayrıca sarının bir yaz rengi olduğunu düşünüyorsanız yanılıyorsunuz. Kışın da dolabınızda sarı bir parçanız mutlaka olsun
+                        </li>
+
+                    </ul>
+                </div>
+            }
+
+        }
+
+
+    }
+
+
+
+    <script>
+        var main = function () {
+
+            $('.btn').click(function (e) {
+                e.preventDefault();
+                var post = $('#status').val();
+                $('<li>').text(post).prependTo('.posts').addClass('post');
+                $('<button class="close">X</button>').appendTo('.post').hide();
+                $('#status').val('');
+                $('.characters').text('240');
+                $('.btn').addClass('disabled');
+
+                $('.post').click(function () {
+                    // adding class selected-post to the post you click on //
+                    $(this).addClass('selected-post').siblings().removeClass('selected-post');
+                    // showing the x button when clicking on the post and hiding it from other posts //
+                    $('.selected-post').children('.close').show().parent().siblings().children('.close').hide();
+
+                    // Removing the post when click on X button //
+                    $('.close').click(function () {
+                        $(this).parent('li.post').remove();
+                    });
+
+                });
+
+            });
+
+            $('#status').keyup(function () {
+                var postLength = $(this).val().length,
+                    charactersLeft = 240 - postLength;
+                $('.characters').text(charactersLeft);
+
+                if (charactersLeft <= 0) {
+                    $('.btn').addClass('disabled');
+                    $('.characters').text("Message too long")
+                } else if (charactersLeft == 240) {
+                    $('.btn').addClass('disabled');
+                } else {
+                    $('.btn').removeClass('disabled');
+                }
+            });
+
+            $('.btn').addClass('disabled');
+        }
+
+        $(document).ready(main);
+    </script>
+
+    <script src="./js/comparison-slider.js"></script>
+    <script>
+        /*Hide menu by default*/
+        $("#menu").hide();
+
+        /*When menu button is clicked, toggle the menu*/
+        $("#menu-btn").click(function () {
+            $("#menu").slideToggle();
+        });
+
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let comparisonSlider = document.getElementById('comparison-slider');
+            let pictureAfter = comparisonSlider.querySelector('.picture--after');
+            let handle = comparisonSlider.querySelector('.handle');
+            let skew = 0;
+            let delta = 0;
+
+            if (comparisonSlider.className.indexOf('comparison-slider') != -1) { //if our section has a class ‘comparison-slider’
+                skew = 2000;
+            }
+
+            comparisonSlider.addEventListener('mousemove', function (e) {
+                delta = (e.clientX - window.innerWidth / 2) * 0.5; // distance between the mouse and the center of the section
+                handle.style.left = e.clientX + delta + 'px'; // change handle position
+                pictureAfter.style.width = e.clientX + skew + delta + 'px'; // change width of pictureAfter
+            });
+        });
+    </script>
+
+
+    <script>
+        $(function () {
+            $("#menu-button").click(function () {
+                $("#mobile-nav").toggle('display');
+            });
+        });
+    </script>
+
+</body>
+</html>

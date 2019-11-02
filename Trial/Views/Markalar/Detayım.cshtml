@@ -1,0 +1,151 @@
+﻿@model IEnumerable<Trial.Models.Markalar>
+
+@{
+    ViewBag.Title = "Detayım";
+}
+
+
+
+<html>
+<head>
+    <style>
+    </style>
+    <link href="~/Css/MarkaDetay.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+    <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="widht=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+</head>
+<body>
+
+
+    <div class="topnav">
+
+        <a href="/Moda/Index" class="baslık">MODA</a>
+        <a href="#" class="baslık">MAKYAJ</a>
+        <a href="/MarkaResim/Index" class="baslık">MARKALAR</a>
+        <a href="/Member/Register" class="smoothscrool">KAYDOL</a>
+
+        <div class="search-container">
+            <form action="/action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+
+
+    </div>
+
+
+    <div class="hizala">
+        @foreach (var item in Model)
+        {
+
+
+
+                <div style="margin-top:50px;">
+                    <h2>@item.MarkaAdi</h2>
+                </div>
+
+                <div style="margin-top:50px;">@item.MarkaDetay</div>
+
+                <br />
+                <br />
+                <div style="width:1000px; height:500px;margin-left:200px;">
+                    <div class="resim">
+                        <img src="@item.MarkaResim" alt="" style="width:300px;height:220px; border-radius:10px; " />
+                    </div>
+                    <div class="resim">
+                        <img src="@item.Foto1" alt="" style="width:300px;height:220px; border-radius:10px; " />
+                    </div>
+
+                    <div class="resim">
+                        <img src="@item.Foto2" alt="" style="width:300px;height:220px; border-radius:10px; " />
+                    </div>
+                    <div class="resim">
+                        <img src="@item.Logo" alt="" style="width:300px;height:220px; border-radius:10px; " />
+                    </div>
+                </div>
+
+            }
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<dl class="dl-horizontal">
+        @*<dt>
+                @Html.DisplayNameFor(model => model.MarkaAdi)
+            </dt>*
+
+        <dd>
+            @Html.DisplayFor(model => model.MarkaAdi)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.MarkaDetay)
+            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MarkaDetay)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.MarkaResim)
+            </dt>
+
+        <div class="display-field">
+            @Html.EditorFor(model => model.MarkaResim)
+        </div>
+
+
+        <div class="resim">
+            <img src="@item.Logo" alt="" style="width:300px;height:220px; border-radius:10px; " />
+        </div>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Foto1)
+            </dt>*@
+
+
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Foto2)
+            </dt>
+
+        <div class="display-field">
+            <img src="@Url.Content(@Model.Foto2)" style="height:200px; width:400px;" />
+        </div>
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Logo)
+            </dt>
+
+
+        <div class="display-field">
+            <img src="@Url.Content(@Model.Logo))" style="height:200px; width:400px;" />
+        </div>
+
+    </dl>*@
+
+</body>
+</html>

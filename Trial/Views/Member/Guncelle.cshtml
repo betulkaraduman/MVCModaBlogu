@@ -1,0 +1,582 @@
+﻿@model Trial.Models.Uye
+
+@{
+    ViewBag.Title = "Guncelle";
+}
+
+
+<html>
+<head>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'lato',sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.5;
+            background-color: #e9cbcb;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        #serit {
+            margin: inherit;
+            /*margin-left: 0;
+            margin-right: 0*/;
+            width: 100%;
+            height: 188px;
+            background-color: #ea9d9d;
+        }
+
+        .box {
+            /*margin: 100px auto;*/
+            width: 300px;
+            height: 50px;
+        }
+
+        .container-4 {
+            overflow: hidden;
+            margin-left: 1700px;
+            width: 100%;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+            .container-4 input#search {
+                width: 300px;
+                height: 50px;
+                margin-top: 15px;
+                background: #f2bdbd;
+                border: none;
+                font-size: 10pt;
+                float: left;
+                color: #fff;
+                padding-left: 15px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+            }
+
+                .container-4 input#search::-webkit-input-placeholder {
+                    color: #65737e;
+                    font-size: 18px;
+                }
+
+                .container-4 input#search:-moz-placeholder { /* Firefox 18- */
+                    color: #fff;
+                    font-size: 18px;
+                }
+
+                .container-4 input#search::-moz-placeholder { /* Firefox 19+ */
+                    color: #65737e;
+                }
+
+                .container-4 input#search:-ms-input-placeholder {
+                    color: #65737e;
+                }
+
+            .container-4 button.icon {
+                -webkit-border-top-right-radius: 5px;
+                -webkit-border-bottom-right-radius: 5px;
+                -moz-border-radius-topright: 5px;
+                -moz-border-radius-bottomright: 5px;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                margin-top: 15px;
+                border: none;
+                background: #ea9d9d;
+                height: 50px;
+                width: 50px;
+                color: #4f5b66;
+                opacity: 0;
+                font-size: 18pt;
+                -webkit-transition: all .55s ease;
+                -moz-transition: all .55s ease;
+                -ms-transition: all .55s ease;
+                -o-transition: all .55s ease;
+                transition: all .55s ease;
+            }
+
+            .container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon {
+                outline: none;
+                opacity: 0.8;
+                margin-left: -50px;
+            }
+
+                .container-4:hover button.icon:hover {
+                    background: white;
+                }
+
+        #menu ul {
+            list-style: none;
+        }
+
+        #menu {
+            margin-left: 75px;
+        }
+
+            #menu ul li {
+                display: inherit;
+                float: left;
+                margin-left: 200px;
+                margin-top: 75px;
+            }
+
+            #menu li a {
+                text-decoration: none;
+                color: #cf3030;
+                font-size: 34px;
+                font-weight: 800;
+            }
+
+        .form-group {
+            width: 400px;
+        }
+
+        .govde {
+            width: 1710px;
+            height: 1100px;
+            margin-left: 150px;
+        }
+
+        .col {
+            float: left;
+            height: 1500px;
+            width: 33.333333%;
+            padding: 20px;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .item {
+            height: 800px;
+            background-color: blue;
+        }
+
+        .aralık {
+            width: 700px;
+            height: 1000px;
+            margin-left: 20%;
+            margin-top: 5%;
+        }
+
+        .col-md-10 {
+            width: 100px;
+        }
+
+        .form-group input[type=submit] {
+            margin-top: 15px;
+            width: 172px;
+            height: 30px;
+        }
+
+        .btn-default {
+            background-color: #ea9d9d;
+        }
+
+
+
+        .topnav {
+            overflow: hidden;
+            background-color: #ea9d9d;
+            width: 100%;
+            height: 120px;
+            padding: 0px;
+        }
+
+        .top {
+            margin-top: 10px;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+
+        .topnav a {
+            margin-top: 2%;
+            margin-left: 5%;
+            float: left;
+            display: block;
+            color: #cf3030;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+            .topnav a:hover {
+                background-color: #efb7b7;
+                color: #e97272;
+            }
+
+            .topnav a.active {
+                color: #cf3030;
+            }
+
+        .topnav .search-container {
+            float: right;
+        }
+
+        .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 12px;
+            border: none;
+            width: 60%;
+            height: 25px;
+        }
+
+        .search-container {
+            margin-top: 2%;
+            height: 40px;
+        }
+        #a a {
+            color: #551A8B;
+            margin-top: 1%;
+            margin-left: 1%;
+            float: left;
+            display: block;
+            color: #cf3030;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .topnav .search-container button {
+            height: 25px;
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 22%;
+            background: #efb7b7;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+            .topnav .search-container button:hover {
+                background: #ccc;
+            }
+
+        #aralık {
+
+            height: 120px;
+        }
+
+        .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+
+        .top {
+            margin-top: 70px;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+
+        ::-webkit-input-placeholder {
+            font-size: 80%;
+        }
+
+        .isimlendirme {
+            margin-bottom:10px;
+            margin-left:40px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            font-size: 44px;
+        }
+
+        }
+
+        .hizala {
+
+            height: 500px;
+            width: 800px;
+            margin-left: 150px;
+            margin-top: 70px;
+            float: left;
+        }
+        .sırala{
+            float:left;
+           
+            width:45%;
+
+        }
+
+        .aaa {
+            background-color: aqua;
+        }
+        input{
+            margin-top:10px;
+            width:200px;
+            height:35px;
+            border-radius:10px;
+        }
+       input value{
+           font-size:15px;
+           margin-left:20px;
+       }
+
+        .hizalam {
+            float: left;
+            height: 40px;
+            width: 70%;
+        }
+        #mobile-nav {
+            display: none;
+            padding-left: 10px;
+            margin-top: 0;
+            width: 10%;
+        }
+
+        #top-bar {
+            margin-left: 12px;
+            margin-top: 25px;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+
+        #mobile-nav li {
+            margin-left: -4px;
+            padding-top: 15px;
+            list-style-type: none;
+            width: 150px;
+            display: block;
+            border-bottom: thin solid #e9cbcb;
+            border-top: none;
+            width: 48px;
+        }
+
+            #mobile-nav li:hover {
+                width: 150px;
+                background-color: #e97272;
+            }
+
+            #mobile-nav li a {
+                color: black;
+                font-weight: 700;
+                text-decoration: none;
+                display: block;
+                box-sizing: border-box;
+                width: 80%;
+                height: 100%;
+            }
+
+        #menu-button:hover {
+            cursor: pointer;
+        }
+
+
+
+    </style>
+
+    <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+    <link href="/maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <meta name="viewport" content="widht=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+
+
+    <div class="hizalam">
+        <div class="container">
+            <div id="top-bar">
+                <img id="menu-button" src="http://mattdesimini.com/images/howtoweb/menu.png" style="width:34px">
+            </div>
+            <ul id="mobile-nav">
+                <li><a href="@Url.Action("MakyajOlustur","UyeDetay",new { id = Session["UserId"] })" style="margin-left:15px;margin-bottom:10px;">Makyaj</a></li>
+                <li><a href="@Url.Action("MarkaOlustur","UyeDetay",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="smoothScroll" style="margin-left:15px;margin-bottom:10px;">Markan</a></li>
+                <li><a href="@Url.Action("FizikselOzellik","UyeDetay",new { id = Session["UserId"] })" style="margin-left:15px;margin-bottom:10px;">Özelliklerin</a></li>
+                <li><a href="@Url.Action("Guncelle","Member",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Güncelle</a></li>
+                <li><a href="@Url.Action("BegeniGetirme","Member",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Kaydettiklerim</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="hizalam" style="margin-left:-650px; margin-top:20px;">
+        <a href="@Url.Action("Index","Member")" class="smoothScroll" id="a" style="font-size:25px; margin-left:10px;margin-top:-15px; text-decoration:none;">Anasayfa</a>
+
+        <a href="@Url.Action("Begeni","Member",new { id = Session["UserId"] })" class="smoothScroll" id="a" style="font-size:25px; margin-left:10px;margin-top:-15px; text-decoration:none;">Kombinler</a>
+        <a href="@Url.Action("YorumEkle","Member",new {id=Session["UserId"] } )" class="baslık" style="font-size:25px; margin-left:40px; text-decoration:none; margin-top:-14px;">Yorum</a>
+        <a href="@Url.Action("OzellikDetay","Member",new {id=Session["UserId"]})" class="smoothScroll" id="a" style="font-size:25px; margin-left:40px;margin-top:-15px; text-decoration:none;">Goz Ten detay</a>
+        <a href="@Url.Action("Ozellik","Member",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="baslık" style="font-size:25px; margin-left:40px; text-decoration:none; margin-top:-14px;">Marka</a>
+
+    </div>
+
+
+    <div style="height:100px;"></div>
+    <div class="hizala">
+        <div class=" arkaplan">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.UserId)
+
+                    <div class="aralık">
+                        <div class="sırala">
+                            <div class="form-group">
+                                <label class="isimlendirme">Kullanıcı Adı ;</label>
+
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.Username, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label class="isimlendirme">İsism ;</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Name, new { @id = "aaa" })
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="form-group">
+                                <label class="isimlendirme">Soyisim ;</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Surname, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="form-group">
+                                <label class="isimlendirme">Email ;</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <br />
+
+
+                        </div>
+
+                        <div class="sırala">
+                            <div class="form-group">
+                                <label class="isimlendirme">Şifre ;</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Password, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label class="isimlendirme">Boy ;</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Boy, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label class="isimlendirme">Kilo ;</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Kilo, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="form-group">
+                                <label class="isimlendirme">Yaş ;</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Yas, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <br />
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Güncelle" class="btn btn-default" style="margin-left:100px; height:50px; width:300px;" />
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            }
+
+        </div>
+    </div>
+
+    <div class="arkaplan"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="./js/comparison-slider.js"></script>
+    <script>
+        /*Hide menu by default*/
+        $("#menu").hide();
+
+        /*When menu button is clicked, toggle the menu*/
+        $("#menu-btn").click(function () {
+            $("#menu").slideToggle();
+        });
+
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let comparisonSlider = document.getElementById('comparison-slider');
+            let pictureAfter = comparisonSlider.querySelector('.picture--after');
+            let handle = comparisonSlider.querySelector('.handle');
+            let skew = 0;
+            let delta = 0;
+
+            if (comparisonSlider.className.indexOf('comparison-slider') != -1) { //if our section has a class ‘comparison-slider’
+                skew = 2000;
+            }
+
+            comparisonSlider.addEventListener('mousemove', function (e) {
+                delta = (e.clientX - window.innerWidth / 2) * 0.5; // distance between the mouse and the center of the section
+                handle.style.left = e.clientX + delta + 'px'; // change handle position
+                pictureAfter.style.width = e.clientX + skew + delta + 'px'; // change width of pictureAfter
+            });
+        });
+    </script>
+
+
+    <script>
+        $(function () {
+            $("#menu-button").click(function () {
+                $("#mobile-nav").toggle('display');
+            });
+        });
+    </script>
+</body>
+
+</body>
+</html>
+

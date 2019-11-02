@@ -1,0 +1,230 @@
+﻿@model IEnumerable<Trial.Models.UyeMakyaj>
+@{
+    ViewBag.Title = "MakyajGetir";
+}
+
+<html>
+<head>
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #a a {
+            color: #551A8B;
+            margin-top: 1%;
+            margin-left: 1%;
+            float: left;
+            display: block;
+            color: #cf3030;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        #aralık {
+            height: 120px;
+        }
+
+
+        body {
+            font-family: 'lato',sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.5;
+            background-color: #e9cbcb;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+
+
+
+        .duzenle a {
+            padding-top: 20px;
+            margin-left: 35%;
+            text-decoration: none;
+            font-size: 18px;
+            color: #cf3030;
+            font-weight: 700;
+        }
+
+        #mobile-nav {
+            display: none;
+            padding-left: 10px;
+            margin-top: 0;
+            width: 10%;
+        }
+
+        #top-bar {
+            margin-left: 12px;
+            margin-top: 25px;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+
+        #mobile-nav li {
+            margin-left: -4px;
+            padding-top: 15px;
+            list-style-type: none;
+            width: 150px;
+            display: block;
+            border-bottom: thin solid #e9cbcb;
+            border-top: none;
+            width: 48px;
+        }
+
+            #mobile-nav li:hover {
+                width: 150px;
+                background-color: #e97272;
+            }
+
+            #mobile-nav li a {
+                color: black;
+                font-weight: 700;
+                text-decoration: none;
+                display: block;
+                box-sizing: border-box;
+                width: 80%;
+                height: 100%;
+            }
+
+        #menu-button:hover {
+            cursor: pointer;
+        }
+
+        .hizalam {
+            float: left;
+            height: 40px;
+            width: 70%;
+        }
+
+        .hizala {
+            margin-left: 14%;
+        }
+
+        .duzenle {
+            margin-top: 50px;
+            margin-left: 20%;
+        }
+
+        select {
+            width: 200px;
+            height: 35px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hizalam">
+        <div class="container">
+            <div id="top-bar">
+                <img id="menu-button" src="http://mattdesimini.com/images/howtoweb/menu.png" style="width:34px">
+            </div>
+            <ul id="mobile-nav">
+                <li><a href="@Url.Action("MakyajOlustur","UyeDetay",new { id = Session["UserId"] })" style="margin-left:15px;margin-bottom:10px;">Makyaj</a></li>
+                <li><a href="@Url.Action("MarkaOlustur","UyeDetay",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="smoothScroll" style="margin-left:15px;margin-bottom:10px;">Markan</a></li>
+                <li><a href="@Url.Action("FizikselOzellik","UyeDetay",new { id = Session["UserId"] })" style="margin-left:15px;margin-bottom:10px;">Özelliklerin</a></li>
+                <li><a href="@Url.Action("Guncelle","Member",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Güncelle</a></li>
+                <li><a href="@Url.Action("BegeniGetirme","Member",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Kaydettiklerim</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="hizalam" style="margin-left:-650px; margin-top:20px;">
+
+        <a href="@Url.Action("Begeni","Member",new { id = Session["UserId"] })" class="smoothScroll" id="a" style="font-size:25px; margin-left:10px;margin-top:-15px; text-decoration:none;">Anasayfa</a>
+        <a href="@Url.Action("YorumEkle","Member",new {id=Session["UserId"] } )" class="baslık" style="font-size:25px; margin-left:40px; text-decoration:none; margin-top:-14px;">Yorum</a>
+        <a href="@Url.Action("OzellikDetay","Member",new {id=Session["UserId"]})" class="smoothScroll" id="a" style="font-size:25px; margin-left:40px;margin-top:-15px; text-decoration:none;">Goz Ten detay</a>
+        <a href="@Url.Action("Ozellik","Member",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="baslık" style="font-size:25px; margin-left:40px; text-decoration:none; margin-top:-14px;">Marka</a>
+        <a href="@Url.Action("BegeniGetirme","Member",new {id=Session["UserId"]})" class="smoothScroll" id="a" style="font-size:25px; margin-left:40px;margin-top:-15px;text-decoration:none;">Begenilerim</a>
+
+    </div>
+    <div style="height:100px;"></div>
+
+
+
+    <div class="ayarla">
+        <div class="duzenle">
+
+
+            @using (Html.BeginForm("MakyajOlustur", "UyeDetay", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h3>
+                        Senin favori makyaj çeşidin hangisi
+                    </h3>
+                    <br />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DropDownList("CesitId", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Kaydet" class="btn btn-default" style="height:34px;width:200px; background-color:#e97272; border-radius:5px;" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+
+
+    <script src="./js/comparison-slider.js"></script>
+    <script>
+        /*Hide menu by default*/
+        $("#menu").hide();
+
+        /*When menu button is clicked, toggle the menu*/
+        $("#menu-btn").click(function () {
+            $("#menu").slideToggle();
+        });
+
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let comparisonSlider = document.getElementById('comparison-slider');
+            let pictureAfter = comparisonSlider.querySelector('.picture--after');
+            let handle = comparisonSlider.querySelector('.handle');
+            let skew = 0;
+            let delta = 0;
+
+            if (comparisonSlider.className.indexOf('comparison-slider') != -1) { //if our section has a class ‘comparison-slider’
+                skew = 2000;
+            }
+
+            comparisonSlider.addEventListener('mousemove', function (e) {
+                delta = (e.clientX - window.innerWidth / 2) * 0.5; // distance between the mouse and the center of the section
+                handle.style.left = e.clientX + delta + 'px'; // change handle position
+                pictureAfter.style.width = e.clientX + skew + delta + 'px'; // change width of pictureAfter
+            });
+        });
+    </script>
+
+
+    <script>
+        $(function () {
+            $("#menu-button").click(function () {
+                $("#mobile-nav").toggle('display');
+            });
+        });
+    </script>
+
+</body>
+</html>

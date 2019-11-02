@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Trial.Models.Kategori>
+
+@{
+    ViewBag.Title = "KategoriListe";
+}
+
+<h2>KategoriListe</h2>
+
+<h4>Kategoriler</h4>
+<div class="row">
+    <div class="col-lg-6">
+        @foreach (var item in Model)
+
+        {
+        <ul class="list-unstyled">
+            <li>
+                <a href="/Yonetici/ekle">@item.KategoriId,@item.KategoriAdi</a>
+            </li>
+           
+        </ul>
+        }
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KategoriAdı)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KategoriAdı)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.KategoriId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.KategoriId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.KategoriId })
+        </td>
+    </tr>
+}
+
+</table>*@

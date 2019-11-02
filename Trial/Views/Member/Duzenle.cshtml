@@ -1,0 +1,33 @@
+﻿@model List<Trial.Models.MarkaMember>
+
+@{
+    ViewBag.Title = "Duzenle";
+}
+
+<h2>Duzenle</h2>
+
+
+
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @item.markalar.MarkaAdi
+    </td>
+    <td>
+        @item.markalar.MarkaDetay
+    </td>
+    <td>
+        @item.markalar.MarkaResim
+    </td>
+    <td>
+        @item.markalar.Foto1
+    </td>
+    <td>
+        @item.markalar.Foto2
+    </td>
+
+</tr>
+    }
+

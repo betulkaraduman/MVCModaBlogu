@@ -1,0 +1,542 @@
+﻿
+@{
+    ViewBag.Title = "anasayfa";
+}
+
+<html>
+<head>
+    <style>
+
+        body {
+            font-family: 'lato',sans-serif;
+            font-size: 1.6rem;
+            background-image: url('../../Picture/Arkaplan/arka2.png');
+            font-weight: 400;
+            font-family: Helvetica;
+        }
+
+    
+        .cards {
+            float: left;
+            margin-left: 130px;
+            margin-top: 20px;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            max-width: 1000px;
+        }
+
+        .card--1 .card__img, .card--1 .card__img--hover {
+            background-image: url('../../Picture/Arkaplan/coco.jpg');
+            /*background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');*/
+        }
+
+        .card--2 .card__img, .card--2 .card__img--hover {
+            background-image: url('../../Picture/Arkaplan/caarrie.jpg');
+            /*background-image: url('https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');*/
+        }
+
+        .card--3 .card__img, .card--3 .card__img--hover {
+            background-image: url('../../Picture/Arkaplan/pradam.jpg');
+            /*background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');*/
+        }
+
+        .card--4 .card__img, .card--4 .card__img--hover {
+            background-image: url('../../Picture/Arkaplan/versacek.jpg');
+            /*background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');*/
+        }
+
+        .card--5 .card__img, .card--5 .card__img--hover {
+            background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+        }
+
+        
+        .card__img {
+            visibility: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 150px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .card__info-hover {
+            position: absolute;
+            padding: 16px;
+            width: 100%;
+            opacity: 0;
+            top: 0;
+        }
+
+        .card__img--hover {
+            transition: 0.2s all ease-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            position: absolute;
+            height: 150px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            top: 0;
+        }
+
+        .duzen {
+            margin-left: 20px;
+            width: 250px;
+            float: left;
+        }
+
+        .duzen2 {
+            background-color: antiquewhite;
+            width: 450px;
+            float: left;
+        }
+
+        .card {
+            float: left;
+            height: 350px;
+            margin-left: 15px;
+            transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+            background-color: #fff;
+            width: 100%;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+        }
+
+            .card:hover {
+                box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+                transform: scale(1.10, 1.10);
+            }
+
+        .card__info {
+            z-index: 2;
+            background-color: #fff;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            padding: 16px 24px 24px 24px;
+        }
+
+        .card__category {
+            font-family: 'Raleway', sans-serif;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 2px;
+            font-weight: 500;
+            color: #868686;
+        }
+
+        .card__title {
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .card__by {
+            font-size: 12px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+        }
+
+        .card__author {
+            font-weight: 600;
+            text-decoration: none;
+            color: #AD7D52;
+        }
+
+        .card:hover .card__img--hover {
+            height: 100%;
+            opacity: 0.3;
+        }
+
+        .card:hover .card__info {
+            background-color: transparent;
+            position: relative;
+        }
+
+        .card:hover .card__info-hover {
+            opacity: 1;
+        }
+
+        #card1 {
+            margin-top: 110px;
+        }
+
+        #card2 {
+            margin-top: 60px;
+        }
+
+        #card3 {
+            margin-top: 90px;
+        }
+
+        #card_1 {
+            height: 320px;
+        }
+
+        #card_3 {
+            width: 220px;
+            height: 350px;
+        }
+
+        #card_2 {
+            height: 410px;
+        }
+
+        #card_4 {
+            width: 220px;
+            height: 500px;
+        }
+
+        #card_5 {
+            margin-top: 50px;
+            height: 550px;
+        }
+
+        .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+
+        ::-webkit-input-placeholder {
+            font-size: 80%;
+        }
+
+        #a {
+            height: 100px;
+        }
+
+            #a {
+                margin-top: 1%;
+                margin-left: 2%;
+                float: left;
+                display: block;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 30px;
+                font-weight: 700;
+            }
+
+        #baslik {
+            height: 5%;
+            margin-top: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #mobile-nav {
+            display: none;
+            padding-left: 10px;
+            margin-top: 0;
+            width: 10%;
+        }
+
+        #top-bar {
+            margin-left: 12px;
+            margin-top: 25px;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+
+        #mobile-nav li {
+            margin-left: -4px;
+            padding-top: 15px;
+            list-style-type: none;
+            width: 150px;
+            display: block;
+            border-bottom: thin solid #e9cbcb;
+            border-top: none;
+            width: 48px;
+        }
+
+            #mobile-nav li:hover {
+                width: 110px;
+                background-color: #e97272;
+            }
+
+            #mobile-nav li a {
+                color: black;
+                font-weight: 700;
+                text-decoration: none;
+                display: block;
+                box-sizing: border-box;
+                width: 80%;
+                height: 100%;
+            }
+
+        #menu-button:hover {
+            cursor: pointer;
+        }
+
+
+        /*.hizalam {
+            float: left;
+            height: 40px;
+            width: 70%;
+        }*/
+
+        .hizalam a{
+            font-size:20px;
+        }
+        .container {
+            margin-left: 2px;
+            /*max-width: 250px;*/
+        }
+    </style>
+
+</head>
+<body>
+
+
+    @*<div class="hizalam">
+            <div class="container">
+                <div id="top-bar">
+                    <img id="menu-button" src="http://mattdesimini.com/images/howtoweb/menu.png" style="width:34px">
+                </div>
+                <ul id="mobile-nav">
+                    <li><a href="@Url.Action("MakyajOlustur","UyeDetay",new { id = Session["UserId"] })" style="margin-left:15px;margin-bottom:10px;">Makyaj</a></li>
+                    <li><a href="@Url.Action("MarkaOlustur","UyeDetay",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="smoothScroll" style="margin-left:15px;margin-bottom:10px;">Markan</a></li>
+                    <li><a href="@Url.Action("FizikselOzellik","UyeDetay",new { id = Session["UserId"] })" style="margin-left:15px;margin-bottom:10px;">Özelliklerin</a></li>
+                    <li><a href="@Url.Action("Begeni1","UyeDetay",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Begeni</a></li>
+                    <li><a href="@Url.Action("Guncelle","Member",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Güncelle</a></li>
+
+                </ul>
+            </div>
+        </div>*@
+    <div class="hizalam" style="margin-left:270px; margin-top:30px;">
+
+        <a href="@Url.Action("Fotograflar","Home",new { })" class="smoothScroll" id="a" style=" margin-left:10px;margin-top:-15px; text-decoration:none;">Kombinler</a>
+        <a href="@Url.Action("Index1","Makyaj",new { } )" class="smoothScroll" id="a" style="; margin-left:40px;margin-top:-15px; text-decoration:none;">Makyaj</a>
+        <a href="@Url.Action("denem","Markalar",new { } )" id="a" class="baslık" style=" margin-left:40px; text-decoration:none; margin-top:-14px;">Markalar</a>
+        <a href="@Url.Action("Register","Member",new {} )" class="smoothScroll" id="a" style=" margin-left:40px;margin-top:-15px;text-decoration:none;">Kaydol</a>
+    </div>
+
+    <div style="height:20px;"></div>
+
+    <section class="cards">
+        <div class="duzen" id="card1">
+            <article class="card card--1" id="card_1">
+                <div class="card__info-hover">
+                    <svg class="card__like" viewBox="0 0 24 24">
+                        <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
+                    </svg>
+
+                </div>
+                <div class="card__img"></div>
+                <a href="#" class="card_link">
+                    <div class="card__img--hover"></div>
+                </a>
+                <div class="card__info">
+                    <h3 class="card__title">-Coco Chanel</h3>
+                    <span class="card__by"><a href="#" class="card__author" title="author">“Moda geçici, stil kalıcıdır.”</a></span>
+                </div>
+            </article>
+        </div>
+
+        <div class="duzen" id="card2">
+            <article class="card card--2" id="card_2">
+                <div class="card__info-hover">
+                    <svg class="card__like" viewBox="0 0 24 24">
+                        <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
+                    </svg>
+
+                </div>
+                <div class="card__img"></div>
+                <a href="#" class="card_link">
+                    <div class="card__img--hover"></div>
+                </a>
+                <div class="card__info">
+                    <h3 class="card__title">Carrie Bradshaw</h3>
+                    <span class="card__by">
+                        <a href="#" class="card__author" title="author">
+                            “Paralarımı tam olarak burda görmeyi seviyorum. Gardrobumda asılı şekilde..”
+                        </a>
+                    </span>
+                </div>
+            </article>
+        </div>
+
+        <div class="duzen" id="card3">
+            <article class="card card--3" id="card_3">
+                <div class="card__info-hover">
+                    <svg class="card__like" viewBox="0 0 24 24">
+                        <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
+                    </svg>
+
+                </div>
+                <div class="card__img"></div>
+                <a href="#" class="card_link">
+                    <div class="card__img--hover"></div>
+                </a>
+                <div class="card__info">
+                    <h3 class="card__title">-Prada</h3>
+                    <span class="card__by"><a href="#" class="card__author" title="author">“İnsanların sadece marka satın alması korkunç bir şey. Marka onlara asla beklediği mutluluğu vermeyecektir.”</a></span>
+                </div>
+            </article>
+        </div>
+
+        <div class="duzen" id="card4">
+            <article class="card card--4" id="card_4">
+                <div class="card__info-hover">
+                    <svg class="card__like" viewBox="0 0 24 24">
+                        <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
+                    </svg>
+
+                </div>
+                <div class="card__img"></div>
+                <a href="#" class="card_link">
+                    <div class="card__img--hover"></div>
+                </a>
+                <div class="card__info">
+                    <h3 class="card__title">-Gianni Versace</h3>
+                    <span class="card__by"><a href="#" class="card__author" title="author">“İyi bir kıyafet yaratmanın anahtarı kendin olmaktır. Trendlere boyun eğme! Modanın sana hükmetmesine izin verme, sadece kim olduğuna, giyim tarzın ve yaşama biçiminle neyi ifade etmek istediğine karar ver!”</a></span>
+                </div>
+            </article>
+        </div>
+
+        <div class="duzen" id="card5">
+            <article class="card card--5" id="card_5">
+                <div class="card__info-hover">
+                    <svg class="card__like" viewBox="0 0 24 24">
+                        <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
+                    </svg>
+
+                </div>
+                <div class="card__img"></div>
+                <a href="#" class="card_link">
+                    <div class="card__img--hover"></div>
+                </a>
+                <div class="card__info">
+                    <h3 class="card__title">-Editörün Yorumu</h3>
+                    <span class="card__by">
+                        <a href="#" class="card__author" title="author">
+                            “Kendi modanı yaratabilirsin ben de sana bu yolda elimden geleni yapabilirim hadi kaydol ve moda maceranı başlat”
+                        </a>
+                    </span>
+                </div>
+
+
+            </article>
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <div style="background-image: url('../../Picture/Arkaplan/arka2.png');
+        margin-top: 685px; height:40px;"></div>
+    <script>
+        var main = function () {
+
+            $('.btn').click(function (e) {
+                e.preventDefault();
+                var post = $('#status').val();
+                $('<li>').text(post).prependTo('.posts').addClass('post');
+                $('<button class="close">X</button>').appendTo('.post').hide();
+                $('#status').val('');
+                $('.characters').text('240');
+                $('.btn').addClass('disabled');
+
+                $('.post').click(function () {
+                    // adding class selected-post to the post you click on //
+                    $(this).addClass('selected-post').siblings().removeClass('selected-post');
+                    // showing the x button when clicking on the post and hiding it from other posts //
+                    $('.selected-post').children('.close').show().parent().siblings().children('.close').hide();
+
+                    // Removing the post when click on X button //
+                    $('.close').click(function () {
+                        $(this).parent('li.post').remove();
+                    });
+
+                });
+
+            });
+
+            $('#status').keyup(function () {
+                var postLength = $(this).val().length,
+                    charactersLeft = 240 - postLength;
+                $('.characters').text(charactersLeft);
+
+                if (charactersLeft <= 0) {
+                    $('.btn').addClass('disabled');
+                    $('.characters').text("Message too long")
+                } else if (charactersLeft == 240) {
+                    $('.btn').addClass('disabled');
+                } else {
+                    $('.btn').removeClass('disabled');
+                }
+            });
+
+            $('.btn').addClass('disabled');
+        }
+
+        $(document).ready(main);
+    </script>
+
+    <script src="./js/comparison-slider.js"></script>
+    <script>
+        /*Hide menu by default*/
+        $("#menu").hide();
+
+        /*When menu button is clicked, toggle the menu*/
+        $("#menu-btn").click(function () {
+            $("#menu").slideToggle();
+        });
+
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let comparisonSlider = document.getElementById('comparison-slider');
+            let pictureAfter = comparisonSlider.querySelector('.picture--after');
+            let handle = comparisonSlider.querySelector('.handle');
+            let skew = 0;
+            let delta = 0;
+
+            if (comparisonSlider.className.indexOf('comparison-slider') != -1) { //if our section has a class ‘comparison-slider’
+                skew = 2000;
+            }
+
+            comparisonSlider.addEventListener('mousemove', function (e) {
+                delta = (e.clientX - window.innerWidth / 2) * 0.5; // distance between the mouse and the center of the section
+                handle.style.left = e.clientX + delta + 'px'; // change handle position
+                pictureAfter.style.width = e.clientX + skew + delta + 'px'; // change width of pictureAfter
+            });
+        });
+    </script>
+
+
+    <script>
+        $(function () {
+            $("#menu-button").click(function () {
+                $("#mobile-nav").toggle('display');
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+﻿@media(min-width:576px)
+
+{
+
+    .govde {
+        width: 810px;
+        height: 1100px;
+        margin-left: 150px;
+    }
+}
+
+
+@media(min-width:992px) {
+
+    .govde {
+        width: 1110px;
+        height: 1100px;
+        margin-left: 150px;
+    }
+
+}
+@media(min-width:768px) {
+
+    .govde {
+        width: 1410px;
+        height: 1100px;
+        margin-left: 150px;
+    }
+
+
+
+}
+@media(min-width:1200px) {
+
+    .govde {
+        width: 1710px;
+        height: 1100px;
+        margin-left: 150px;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+/*body {
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgb(0,0,0,0.6)), url('../Picture/Arkaplan/fashion-glasses-go-pro-female-157888.jpeg');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.login-page{
+    width:360px;
+    /*padding:10% 0 0;*/
+    margin :auto;
+
+}
+
+.form{
+    position:relative;
+    z-index:1;
+    background:#e5bbbb;
+    max-width:300px;
+    margin:0 auto 100px;
+    padding:28px;
+
+
+}
+
+.form input{
+    font-family:"Roboto",sans-serif;
+    outline:1px;
+    background:#f2f2f2;
+    width:100%;
+    border:0;
+    margin:0 0 12px;
+    padding:10px;
+    box-sizing:border-box;
+    font-size:13px;
+
+    
+}
+
+.form button{
+
+    font-family:"Roboto",sans-serif;
+    text-transform:uppercase;
+    outline:0px;
+    background:#e28181;
+    width:100%;
+    border:0;
+    padding:2px;
+    color:#FFFFFF;
+    font-size:15px;
+    cursor:pointer;
+    height:35px;
+
+}
+
+.form button:hover,form button:active{
+    background:#ca4b4b;
+
+}
+
+.form .message{
+    margin:15px 0 0;
+    color:aliceblue;
+    font-size:12px;
+
+}
+
+.form .message a{
+    color:#4CAF50;
+    text-decoration:none;
+  
+}
+.form .register-form{
+    display:none;
+}*/

@@ -1,0 +1,53 @@
+﻿@model Trial.Models.Marka
+@{
+    ViewBag.Title = "Rehberler";
+
+}
+
+
+<div class="main">
+
+    <div class="main-content">
+
+        <div class="section" style="margin-top:40px;">
+            <div class="row">
+                <div class="">
+                    <div class="js-sidebar-zone">
+                        <div class="latest-pst">
+                            <div class="pst-block">
+                                @foreach (var rehber in Model.Detays)
+                                {
+
+                                    <div class="pst-block-main">
+                                        <div class="posts">
+
+                                            <article class="post post-tp-21">
+                                                <figure>
+                                                    <a href="/Markalar/MarkaDetay2/@rehber.DetayId">
+                                                    </a>
+                                                </figure>
+                                                <h3 class="title-5"><a href="/Ulkeler/RehberDetay/@rehber.DetayId">@rehber.DetayId</a></h3>
+
+                                                <p>&nbsp;</p>
+                                                <p></p>
+                                                <p>&nbsp;</p>
+                                                <p></p>
+                                            </article>
+
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Content END -->
+    <!-- Footer END -->
+</div>

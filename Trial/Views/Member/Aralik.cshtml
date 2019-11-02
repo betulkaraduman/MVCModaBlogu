@@ -1,0 +1,20 @@
+﻿@model Trial.Models.UyeBegeni
+@{
+    ViewBag.Title = "Aralik";
+}
+@using (Html.BeginForm("Aralik", "Member", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    foreach (var item in Model)
+    {
+
+        <h4>Burası</h4>
+
+
+
+

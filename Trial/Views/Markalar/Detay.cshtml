@@ -1,0 +1,184 @@
+﻿@model Trial.Models.Markalar
+
+@{
+    ViewBag.Title = "Detay";
+}
+
+
+<html>
+<head>
+    <style>
+        #a {
+            margin-top: 1%;
+            margin-left: 2%;
+            float: left;
+            display: block;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+
+        #mobile-nav {
+            display: none;
+            padding-left: 10px;
+            margin-top: 0;
+            width: 10%;
+        }
+
+        #top-bar {
+            margin-left: 12px;
+            margin-top: 25px;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+
+        #mobile-nav li {
+            margin-left: -4px;
+            padding-top: 15px;
+            list-style-type: none;
+            width: 150px;
+            display: block;
+            border-bottom: thin solid #e9cbcb;
+            border-top: none;
+            width: 48px;
+        }
+
+            #mobile-nav li:hover {
+                width: 110px;
+                background-color: #e97272;
+            }
+
+            #mobile-nav li a {
+                color: black;
+                font-weight: 700;
+                text-decoration: none;
+                display: block;
+                box-sizing: border-box;
+                width: 80%;
+                height: 100%;
+            }
+
+        #menu-button:hover {
+            cursor: pointer;
+        }
+
+
+        /*.hizalam {
+            float: left;
+            height: 40px;
+            width: 70%;
+        }*/
+
+        .hizalam a {
+            font-size: 20px;
+        }
+
+        .container {
+            margin-left: 2px;
+            /*max-width: 250px;*/
+        }
+      </style>
+    <link href="~/Css/MarkaDetay.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+    <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="widht=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+</head>
+<body>
+
+
+    <div class="hizalam" style="margin-left:220px; margin-top:30px;">
+        <a href="@Url.Action("anasayfa","Home",new { })" class="smoothScroll" id="a" style=" margin-left:10px;margin-top:-15px; text-decoration:none;">Anasayfa</a>
+
+        <a href="@Url.Action("Fotograflar","Home",new { })" class="smoothScroll" id="a" style=" margin-left:10px;margin-top:-15px; text-decoration:none;">Kombinler</a>
+        <a href="@Url.Action("Index1","Makyaj",new { } )" class="smoothScroll" id="a" style="; margin-left:40px;margin-top:-15px; text-decoration:none;">Makyaj</a>
+        <a href="@Url.Action("denem","Markalar",new { } )" id="a" class="baslık" style=" margin-left:40px; text-decoration:none; margin-top:-14px;">Markalar</a>
+        <a href="@Url.Action("Register","Member",new {} )" class="smoothScroll" id="a" style=" margin-left:40px;margin-top:-15px;text-decoration:none;">Kaydol</a>
+    </div>
+
+    <div style="height:20px;"></div>
+    <div class="hizala">
+        <dd>
+            <h4 class="isim"> ~  @Html.DisplayFor(model => model.MarkaAdi)</h4>
+        </dd>
+
+        <br />
+
+
+
+
+        <dd class="detay">
+            @Html.DisplayFor(model => model.MarkaDetay)
+        </dd>
+
+        <br /><br />
+
+
+
+
+
+
+
+
+
+
+
+
+        @*<dd class="resim">
+                <div class="display-field">
+                    <img src= @Url.Content(@Model.MarkaResim)" style="height:200px; width:400px;" />
+                </div>
+            </dd>
+            <br /><br />
+
+
+
+
+
+            <div class="fotolar">
+                <dd>
+                    <div class="display-field">
+                        <img src="@Url.Content(@Model.Foto1)" style="height:150px; width:300px;" />
+                    </div>
+                </dd>
+
+
+                <dd>
+                    <div class="display-field">
+                        <img src="@Url.Content(@Model.Foto2)" style="height:150px; width:300px;" />
+                    </div>
+                </dd>
+
+
+            </div>*@
+        @*<dd>
+                <div class="display-field">
+                    <img src="@Url.Content(@Model.Logo)" style="height:100px; width:200px;" />
+                </div>
+
+            </dd>*@
+
+    </div>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

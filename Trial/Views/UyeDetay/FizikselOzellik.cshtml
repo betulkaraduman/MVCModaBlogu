@@ -1,0 +1,601 @@
+﻿@model Trial.Models.DısOzellik
+
+@{
+    ViewBag.Title = "denemem";
+}
+
+
+
+<html>
+<head>
+    <style>
+
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #ea9d9d;
+            width: 100%;
+            height: 120px;
+            padding: 0px;
+        }
+
+        .top {
+            margin-top: 10px;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+
+        .topnav a {
+            margin-top: 2%;
+            margin-left: 5%;
+            float: left;
+            display: block;
+            color: #cf3030;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+            .topnav a:hover {
+                background-color: #efb7b7;
+                color: #e97272;
+            }
+
+            .topnav a.active {
+                color: #cf3030;
+            }
+
+        .topnav .search-container {
+            float: right;
+        }
+
+        .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 12px;
+            border: none;
+            width: 60%;
+            height: 25px;
+        }
+
+        .search-container {
+            margin-top: 2%;
+            height: 40px;
+        }
+
+        .topnav .search-container button {
+            height: 25px;
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 22%;
+            background: #efb7b7;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+            .topnav .search-container button:hover {
+                background: #ccc;
+            }
+        #a a {
+            color: #551A8B;
+            margin-top: 1%;
+            margin-left: 1%;
+            float: left;
+            display: block;
+            color: #cf3030;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        #aralık {
+            height: 120px;
+        }
+
+        .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+
+        ::-webkit-input-placeholder {
+            font-size: 80%;
+        }
+
+        body {
+            font-family: 'lato',sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.5;
+            background-color: #e9cbcb;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+
+        .form-group {
+            padding-top: 25px;
+        }
+
+        .duzenle a {
+            padding-top: 20px;
+            margin-left: 35%;
+            text-decoration: none;
+            font-size: 18px;
+            color: #cf3030;
+            font-weight: 700;
+        }
+
+        .hizala {
+            margin-left: 10%;
+        }
+
+        /*.duzenle {
+            float: left;
+            margin-top: 70px;
+        }*/
+
+        .duzenle {
+            width: 300px;
+            margin-top: 50px;
+            margin-left: 140px;
+        }
+
+        select {
+            width: 200px;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+
+        figure.snip1390 {
+            height: 180px;
+            font-family: 'Roboto', Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+            min-width: 200px;
+            max-width: 210px;
+            width: 100%;
+            color: #000000;
+            text-align: center;
+            font-size: 16px;
+            background-color: #2C3447;
+            padding: 30px;
+            background-image: linear-gradient(-25deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+            figure.snip1390 *,
+            figure.snip1390 *:before,
+            figure.snip1390 *:after {
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                -webkit-transition: all 0.35s ease;
+                transition: all 0.35s ease;
+            }
+
+            figure.snip1390 figcaption {
+                width: 100%;
+            }
+
+            figure.snip1390 h2,
+            figure.snip1390 h4,
+            figure.snip1390 blockquote {
+                margin: 0;
+            }
+
+            figure.snip1390 h2,
+            figure.snip1390 h4 {
+                font-weight: 300;
+            }
+
+            figure.snip1390 h2 {
+                color: #ffffff;
+            }
+
+            figure.snip1390 h4 {
+                color: #a6a6a6;
+            }
+
+            figure.snip1390 blockquote {
+                font-size: 1em;
+                height: 30px;
+                width: 160px;
+                padding: 5px 5px 30px 10px;
+                background-color: #ffffff;
+                border-radius: 5px;
+                box-shadow: inset -1.4px -1.4px 2px rgba(0, 0, 0, 0.3);
+                text-align: left;
+                position: relative;
+            }
+
+        /*figure.snip1390 blockquote:before {
+                    font-family: 'FontAwesome';
+                    content: "\201C";
+                    position: absolute;
+                    font-size: 45px;
+                    opacity: 0.55;
+                    font-style: normal;
+                    top: 0px;
+                    left: 0px;
+                }*/
+
+        .profile {
+            margin-top: -8px;
+            padding-top: -8px;
+        }
+
+
+        figure.snip1390 .profile {
+            width: 80px;
+            border-radius: 50%;
+            display: inline-block;
+            /*box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);*/
+            margin-bottom: 10px;
+            border: solid 5px #A6A57A;
+        }
+
+        .ayar {
+            float: left;
+        }
+
+
+
+
+
+        #mobile-nav {
+            display: none;
+            padding-left: 10px;
+            margin-top: 0;
+            width: 10%;
+        }
+
+        #top-bar {
+            margin-left: 12px;
+            margin-top: 25px;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+
+        #mobile-nav li {
+            margin-left: -4px;
+            padding-top: 15px;
+            list-style-type: none;
+            width: 150px;
+            display: block;
+            border-bottom: thin solid #e9cbcb;
+            border-top: none;
+            width: 48px;
+        }
+
+            #mobile-nav li:hover {
+                width: 150px;
+                background-color: #e97272;
+            }
+
+            #mobile-nav li a {
+                color: black;
+                font-weight: 700;
+                text-decoration: none;
+                display: block;
+                box-sizing: border-box;
+                width: 80%;
+                height: 100%;
+            }
+
+        #menu-button:hover {
+            cursor: pointer;
+        }
+
+
+        .hizalam {
+            float: left;
+            height: 40px;
+            width: 70%;
+        }
+
+        .container {
+            margin-left: 2px;
+            /*max-width: 250px;*/
+        }
+    </style>
+
+    <link href="~/Css/UyeIndex.css" rel="stylesheet" />
+    <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="widht=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="hizalam">
+        <div class="container">
+            <div id="top-bar">
+                <img id="menu-button" src="http://mattdesimini.com/images/howtoweb/menu.png" style="width:34px">
+            </div>
+            <ul id="mobile-nav">
+                <li><a href="@Url.Action("MakyajOlustur","UyeDetay",new { id = Session["UserId"] })" style="margin-left:15px;margin-bottom:10px;">Makyaj</a></li>
+                <li><a href="@Url.Action("MarkaOlustur","UyeDetay",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="smoothScroll" style="margin-left:15px;margin-bottom:10px;">Markan</a></li>
+                <li><a href="@Url.Action("FizikselOzellik","UyeDetay",new { id = Session["UserId"] })" style="margin-left:15px;margin-bottom:10px;">Özelliklerin</a></li>
+                <li><a href="@Url.Action("Guncelle","Member",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Güncelle</a></li>
+                <li><a href="@Url.Action("BegeniGetirme","Member",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Kaydettiklerim</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="hizalam" style="margin-left:-650px; margin-top:30px;">
+
+        <a href="@Url.Action("Begeni","Member",new { id = Session["UserId"] })" class="smoothScroll" id="a" style="font-size:25px; margin-left:10px;margin-top:-15px; text-decoration:none;">Anasayfa</a>
+        <a href="@Url.Action("OzellikDetay","Member",new {id=Session["UserId"]})" class="smoothScroll" id="a" style="font-size:25px; margin-left:40px;margin-top:-15px; text-decoration:none;">Goz Ten detay</a>
+        <a href="@Url.Action("Ozellik","Member",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="baslık" style="font-size:25px; margin-left:40px; text-decoration:none; margin-top:-14px;">Marka</a>
+        <a href="@Url.Action("BegeniGetirme","Member",new {id=Session["UserId"]})" class="smoothScroll" id="a" style="font-size:25px; margin-left:40px;margin-top:-15px;text-decoration:none;">Begenilerim</a>
+
+    </div>
+
+    <div style="height:20px;"></div>
+
+
+
+    <div>
+
+
+
+
+
+        <div class="duzenle">
+
+
+            @using (Html.BeginForm("FizikselOzellik", "UyeDetay", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Sen Hangisisin ??</h4>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DropDownList("OzellikId", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Kaydet" class="btn btn-default" style="height:34px;width:200px; background-color:#e97272; border-radius:5px;" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <div class="ayar1" style="margin-left:110px; margin-top:20px;">
+
+            <figure class="snip1390 " style="background-color:#ea4b4b;">
+                <img src="~/Picture/Arkaplan/sm.jpg" alt="profile-sample3" class="profile" />
+                @*<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg"*@
+                <figcaption>
+                    <blockquote>Sarışın Mavi Gözlü</blockquote>
+                </figcaption>
+            </figure>
+            <figure class="snip1390" style="background-color:#85eb6c" ;>
+                <img src="~/Picture/Arkaplan/sy.jpg" alt="profile-sample3" class="profile" />
+
+                @*<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg"*@
+                <figcaption>
+                    <blockquote>Sarışın Yeşil Gözlü</blockquote>
+                </figcaption>
+            </figure>
+            <figure class="snip1390" style="background-color:#e9cb3e" ;>
+                <img src="~/Picture/se.jpg" alt="profile-sample3" class="profile" />
+                @*<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg"*@
+                <figcaption>
+                    <blockquote>Sarışın Ela Gözlü</blockquote>
+                </figcaption>
+            </figure>
+        </div>
+
+
+
+    </div>
+
+
+
+    <div style="height:50px;"></div>
+
+
+    <div style="margin-left:320px; margin-top:-820px;">
+
+
+        <div class="ayar" style="margin-top:50px; margin-left:30px;">
+
+            <figure class="snip1390" style="height:215px;background-color:#7f6be2;">
+                <img src="~/Picture/sk.jpg" alt="profile-sample3" class="profile" />
+                @*<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg"*@
+                <figcaption>
+                    <blockquote style="height:52px;">Sarışın Kahverengi Gözlü</blockquote>
+                </figcaption>
+            </figure>
+            <figure class="snip1390" style="background-color:#6bde4a;">
+                <img src="~/Picture/em.jpg" alt="profile-sample3" class="profile" />
+                @*<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg"*@
+                <figcaption>
+                    <blockquote>Esmer Mavi Gözlü</blockquote>
+                </figcaption>
+            </figure>
+            <figure class="snip1390" style="height:200px; background-color:#ea4f62;">
+                <img src="~/Picture/ey.jpg" alt="profile-sample3" class="profile" style="width:90px; height:90px;" />
+                @*<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg"*@
+                <figcaption>
+                    <blockquote>Esmer Yeşil Gözlü</blockquote>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="ayar" style="margin-top:120px;margin-left:20px;">
+
+            <figure class="snip1390" style="height:200px; background-color:#9959eb;">
+                <img src="~/Picture/ee.jpg" alt="profile-sample3" class="profile" />
+                @*<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg"*@
+                <figcaption>
+                    <blockquote>Esmer Ela Gözlü</blockquote>
+                </figcaption>
+            </figure>
+            <figure class="snip1390" style="height:200px; background-color:#50e6c2;">
+                <img src="~/Picture/ek.jpg" alt="profile-sample3" class="profile" style="width:90px; height:90px;" />
+                @*<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg"*@
+                <figcaption>
+                    <blockquote style="height:53px;">Esmer Kahverengi Gözlü</blockquote>
+                </figcaption>
+            </figure>
+            <figure class="snip1390" style="background-color:#54ee90;">
+                <img src="~/Picture/km.jpg" alt="profile-sample3" class="profile" />
+                @*<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg"*@
+                <figcaption>
+                    <blockquote>Kumral Mavi Gözlü</blockquote>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="ayar" style="margin-top:50px;margin-left:20px;">
+
+            <figure class="snip1390" style="background-color:#e9ce4b;">
+                <img src="~/Picture/ky.jpg" alt="profile-sample3" class="profile" />
+                @*<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg" alt="profile-sample3" class="profile" />*@
+                <figcaption>
+                    <blockquote>Kumral Yeşil Gözlü</blockquote>
+                </figcaption>
+            </figure>
+            <figure class="snip1390" style="height:200px; background-color:#f1c364;">
+                <img src="~/Picture/ke.jpg" alt="profile-sample3" class="profile" />
+                @*<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg" alt="profile-sample3" class="profile" />*@
+                <figcaption>
+                    <blockquote>Kumral Ela Gözlü</blockquote>
+                </figcaption>
+            </figure>
+            <figure class="snip1390" style="height:225px; background-color:#3faede;">
+                <img src="~/Picture/kk.jpg" alt="profile-sample3" class="profile" />
+                @*<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg" alt="profile-sample3" class="profile" />*@
+                <figcaption>
+                    <blockquote style="height:55px;">Kumral kahverengi Gözlü</blockquote>
+                </figcaption>
+            </figure>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <script>
+        var main = function () {
+
+            $('.btn').click(function (e) {
+                e.preventDefault();
+                var post = $('#status').val();
+                $('<li>').text(post).prependTo('.posts').addClass('post');
+                $('<button class="close">X</button>').appendTo('.post').hide();
+                $('#status').val('');
+                $('.characters').text('240');
+                $('.btn').addClass('disabled');
+
+                $('.post').click(function () {
+                    // adding class selected-post to the post you click on //
+                    $(this).addClass('selected-post').siblings().removeClass('selected-post');
+                    // showing the x button when clicking on the post and hiding it from other posts //
+                    $('.selected-post').children('.close').show().parent().siblings().children('.close').hide();
+
+                    // Removing the post when click on X button //
+                    $('.close').click(function () {
+                        $(this).parent('li.post').remove();
+                    });
+
+                });
+
+            });
+
+            $('#status').keyup(function () {
+                var postLength = $(this).val().length,
+                    charactersLeft = 240 - postLength;
+                $('.characters').text(charactersLeft);
+
+                if (charactersLeft <= 0) {
+                    $('.btn').addClass('disabled');
+                    $('.characters').text("Message too long")
+                } else if (charactersLeft == 240) {
+                    $('.btn').addClass('disabled');
+                } else {
+                    $('.btn').removeClass('disabled');
+                }
+            });
+
+            $('.btn').addClass('disabled');
+        }
+
+        $(document).ready(main);
+    </script>
+
+    <script src="./js/comparison-slider.js"></script>
+    <script>
+        /*Hide menu by default*/
+        $("#menu").hide();
+
+        /*When menu button is clicked, toggle the menu*/
+        $("#menu-btn").click(function () {
+            $("#menu").slideToggle();
+        });
+
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let comparisonSlider = document.getElementById('comparison-slider');
+            let pictureAfter = comparisonSlider.querySelector('.picture--after');
+            let handle = comparisonSlider.querySelector('.handle');
+            let skew = 0;
+            let delta = 0;
+
+            if (comparisonSlider.className.indexOf('comparison-slider') != -1) { //if our section has a class ‘comparison-slider’
+                skew = 2000;
+            }
+
+            comparisonSlider.addEventListener('mousemove', function (e) {
+                delta = (e.clientX - window.innerWidth / 2) * 0.5; // distance between the mouse and the center of the section
+                handle.style.left = e.clientX + delta + 'px'; // change handle position
+                pictureAfter.style.width = e.clientX + skew + delta + 'px'; // change width of pictureAfter
+            });
+        });
+    </script>
+
+
+    <script>
+        $(function () {
+            $("#menu-button").click(function () {
+                $("#mobile-nav").toggle('display');
+            });
+        });
+    </script>
+
+
+</body>
+</html>
+

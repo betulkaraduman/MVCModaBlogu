@@ -1,0 +1,289 @@
+﻿@model List<Trial.Models.Resimler>
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <style>
+
+        #mobile-nav {
+            display: none;
+            padding-left: 10px;
+            margin-top: 0;
+            width: 10%;
+        }
+
+        #top-bar {
+            margin-left: 12px;
+            margin-top: 25px;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+
+        #mobile-nav li {
+            margin-left: -4px;
+            padding-top: 15px;
+            list-style-type: none;
+            width: 150px;
+            display: block;
+            border-bottom: thin solid #e9cbcb;
+            border-top: none;
+            width: 48px;
+        }
+
+            #mobile-nav li:hover {
+                width: 110px;
+                background-color: #e97272;
+            }
+
+            #mobile-nav li a {
+                color: black;
+                font-weight: 700;
+                text-decoration: none;
+                display: block;
+                box-sizing: border-box;
+                width: 80%;
+                height: 100%;
+            }
+
+        #menu-button:hover {
+            cursor: pointer;
+        }
+
+
+        /*.hizalam {
+            float: left;
+            height: 40px;
+            width: 70%;
+        }*/
+
+        .hizalam a {
+            font-size: 20px;
+        }
+
+        .container {
+            margin-left: 2px;
+            /*max-width: 250px;*/
+        }
+
+        #a {
+            color:#551A8B;
+            margin-top: 1%;
+            margin-left: 2%;
+            float: left;
+            display: block;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+       
+        #aralık {
+            height: 120px;
+        }
+
+        body {
+            font-family: 'lato',sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.5;
+            background-color: #e9cbcb;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+
+        .form-group {
+            padding-top: 25px;
+        }
+
+        .duzenle a {
+            padding-top: 20px;
+            margin-left: 35%;
+            text-decoration: none;
+            font-size: 18px;
+            color: #cf3030;
+            font-weight: 700;
+        }
+
+
+        .hizala {
+            margin-left: 16%;
+        }
+
+        .duzenle {
+            float: left;
+            margin-top: 70px;
+        }
+
+        .duzenle {
+            /*background-color: #ea9d9d;*/
+            height: 250px;
+            margin-left: 5px;
+            width: 25%;
+        }
+
+        .fade {
+            opacity: 1;
+        }
+
+        .duzenle a {
+            padding-top: 20px;
+            margin-left: 35%;
+            text-decoration: none;
+            font-size: 18px;
+            color: #cf3030;
+            font-weight: 700;
+        }
+
+
+        .hizala {
+            margin-left: 16%;
+        }
+
+        .duzenle {
+            /*background-color: #ea9d9d;*/
+            float: left;
+            margin-top: 40px;
+            height: 320px;
+            margin-left: 45px;
+            width: 23%;
+        }
+
+        .search-container {
+            margin-left:-50px;
+            float: right;
+        }
+
+        input[type=text] {
+            padding: 6px;
+       
+            margin-top: 8px;
+            font-size: 12px;
+            border: none;
+            width: 60%;
+            height: 25px;
+        }
+
+        .search-container {
+            height: 40px;
+        }
+
+            .search-container button {
+                height: 25px;
+                float: right;
+                padding: 3px 10px;
+                margin-top: -26px;
+                margin-right: 22%;
+                background: #efb7b7;
+                font-size: 17px;
+                border: none;
+                cursor: pointer;
+            }
+    </style>
+
+    <link href="~/Css/UyeIndex.css" rel="stylesheet" />
+    <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="widht=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="hizalam" style="margin-left:170px; margin-top:30px;">
+        <a href="@Url.Action("anasayfa","Home",new { })" class="smoothScroll" id="a" style=" margin-left:10px;margin-top:-15px; text-decoration:none;">Anasayfa</a>
+        <a href="@Url.Action("Index1","Makyaj",new { } )" class="smoothScroll" id="a" style="margin-left:40px;margin-top:-15px; text-decoration:none;">Makyaj</a>
+        <a href="@Url.Action("denem","Markalar",new { } )" id="a" class="baslık" style=" margin-left:40px; text-decoration:none; margin-top:-14px;">Markalar</a>
+        <a href="@Url.Action("Register","Member",new {} )" class="smoothScroll" id="a" style=" margin-left:40px;margin-top:-15px;text-decoration:none;">Kaydol</a>
+        <div class="search-container"style="margin-right:70px;">
+            @using (Html.BeginForm("Fotograflar", "Home", FormMethod.Get))
+            {
+                @Html.TextBox("searching")
+
+                <button type="submit" style="margin-left:15px;"><i class="fa fa-search" id="icon"></i></button>
+            }
+
+        </div>
+
+    </div>
+
+    <div style="height:80px;"></div>
+
+
+    <div class="alert alert-success alert-dismissable fade show" style="height:60px;width:74%;margin-left:180px;">
+        <p style="padding-top:10px; background-color:#c8add5;height:90px;">
+            &nbsp; &nbsp;
+            Begendiğin kombinleri kaydetmek ve istediğin zaman ulaşmak için üye olmaya ne dersin&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+
+            <button class="close" type="button" data-dismiss="alert" style="opacity:0.9;height:35px; width:45px; background-color:#c8add5;">
+
+                <span style="font-size:24px;">&times;</span>
+            </button>
+            &nbsp; &nbsp; &nbsp;
+            <i class="fas fa-angle-double-right" style="margin-top:15px;"></i> <a href="/member/Register" style="text-decoration:none;font-size:17px;margin-left:10px;margin-right:13px; color:black;">Kaydol</a><i class="fas fa-angle-double-left"></i>
+        </p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous">
+    </script>
+
+    <div style="height:800px;width:85%;margin-left:80px;margin-top:50px;">
+        @using (Html.BeginForm("Fotograflar", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+            foreach (var item in Model)
+            { <div class="hizala" id="hizala">
+
+                    <div class="duzenle">
+                        <img src="@item.Image" alt="" style="width:210px;height:280px; border-radius:10px;margin-right:50px;" />
+                    </div>
+                </div>
+
+
+            }
+
+        }
+
+
+    </div>
+
+</body>
+</html>
+
+@*<div class="alert alert-success alert-dismissable fade show" style="margin-left:180px; background-color:aqua; height:85px; width:60%;">
+        <h4 style="margin-left:10px;margin-top:20px;">Begendiğin kombinleri kaydetmek ve istediğin zaman ulaşmak için kaydolmaya ne dersin</h4>
+
+        @*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <button class="close" type="button" data-dismiss="alert" style="font-size:40px; opacity:0.8;margin-top:15px; height:44px; width:40px;margin-left:20px;">
+        <span>&times;</span>
+    </button>
+    <a href="/member/Register" style="text-decoration:none;font-size:20px;margin-left:50px;">Kaydol</a>
+
+    </div>*@
+

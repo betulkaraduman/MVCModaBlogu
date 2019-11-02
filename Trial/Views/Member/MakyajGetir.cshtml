@@ -1,0 +1,207 @@
+﻿@model Trial.Models.UyeMakyaj
+
+@{
+    ViewBag.Title = "MakyajGetir";
+}
+
+
+<html>
+<head>
+    <style>
+
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #ea9d9d;
+            width: 100%;
+            height: 120px;
+            padding: 0px;
+        }
+
+        .top {
+            margin-top: 10px;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+
+        .topnav a {
+            margin-top: 2%;
+            margin-left: 5%;
+            float: left;
+            display: block;
+            color: #cf3030;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+            .topnav a:hover {
+                background-color: #efb7b7;
+                color: #e97272;
+            }
+
+            .topnav a.active {
+                color: #cf3030;
+            }
+
+        .topnav .search-container {
+            float: right;
+        }
+
+        .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 12px;
+            border: none;
+            width: 60%;
+            height: 25px;
+        }
+
+        .search-container {
+            margin-top: 2%;
+            height: 40px;
+        }
+
+        .topnav .search-container button {
+            height: 25px;
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 22%;
+            background: #efb7b7;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+            .topnav .search-container button:hover {
+                background: #ccc;
+            }
+
+        #aralık {
+            height: 120px;
+        }
+
+        .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+
+        ::-webkit-input-placeholder {
+            font-size: 80%;
+        }
+
+        body {
+            font-family: 'lato',sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.5;
+            background-color: #e9cbcb;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+
+        .form-group {
+            padding-top: 25px;
+        }
+
+        .duzenle a {
+            padding-top: 20px;
+            margin-left: 35%;
+            text-decoration: none;
+            font-size: 18px;
+            color: #cf3030;
+            font-weight: 700;
+        }
+
+        .hizala {
+            margin-left: 10%;
+        }
+
+        /*.duzenle {
+            float: left;
+            margin-top: 70px;
+        }*/
+
+        .duzenle {
+            margin-top: 50px;
+            margin-left: 150px;
+        }
+
+        select {
+            width: 200px;
+            height: 40px;
+            border-radius: 5px;
+        }
+    </style>
+
+    <link href="~/Css/UyeIndex.css" rel="stylesheet" />
+    <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="widht=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="topnav">
+
+        <a href="#" class="baslık">MODA</a>
+
+        <a href="@Url.Action("Create","Member",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="smoothScroll">şişişi</a>
+        <a href="@Url.Action("Begeni","Member",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="smoothScroll">aaaa</a>
+        <a href="@Url.Action("Kisisellestir","UyeDetay",new { Yas = Session["Yas"], Boy = Session["Boy"],Kilo = Session["Kilo"]})" class="baslık">yoyoyoyo</a>
+        <a href="@Url.Action("Guncelle","Member",new {id=Session["UserId"]})" class="smoothScroll">BİLGİLERİN</a>
+        <a href="@Url.Action("Ozellik","Member",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="smoothScroll">Ozellikler</a>
+
+        <div class="search-container">
+            <form action="/action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+
+
+    </div>
+    <div class="duzenle">
+
+
+        @using (Html.BeginForm("MakyajGetir", "Member", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>sevdiğiniz Makyaj türünü seçin </h4>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.DropDownList("CesitId", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Kaydet" class="btn btn-default" style="height:34px;width:200px; background-color:#e97272; border-radius:5px;" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+</body>
+</html>
+

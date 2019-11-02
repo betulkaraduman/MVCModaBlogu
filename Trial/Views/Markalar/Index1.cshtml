@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Trial.Models.MarkaResim>
+
+@{
+    ViewBag.Title = "Index1";
+}
+
+<h2>Index1</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MarkaResmi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarkaAdı)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MarkaResmi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MarkaAdı)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MarkaResimId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MarkaResimId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MarkaResimId })
+        </td>
+    </tr>
+}
+
+</table>

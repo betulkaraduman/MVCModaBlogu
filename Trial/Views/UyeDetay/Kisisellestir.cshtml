@@ -1,0 +1,454 @@
+﻿
+@{
+    ViewBag.Title = "Kisisellestir";
+}
+
+
+<html>
+<head>
+    <style>
+
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #ea9d9d;
+            width: 100%;
+            height: 120px;
+            padding: 0px;
+        }
+
+        .top {
+            margin-top: 10px;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+
+        .topnav a {
+            margin-top: 2%;
+            margin-left: 5%;
+            float: left;
+            display: block;
+            color: #cf3030;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+            .topnav a:hover {
+                background-color: #efb7b7;
+                color: #e97272;
+            }
+
+            .topnav a.active {
+                color: #cf3030;
+            }
+
+        .topnav .search-container {
+            float: right;
+        }
+
+        .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 12px;
+            border: none;
+            width: 60%;
+            height: 25px;
+        }
+
+        .search-container {
+            margin-top: 2%;
+            height: 40px;
+        }
+
+        .topnav .search-container button {
+            height: 25px;
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 22%;
+            background: #efb7b7;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+            .topnav .search-container button:hover {
+                background: #ccc;
+            }
+
+        #aralık {
+            height: 120px;
+        }
+
+        .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+
+
+        ::-webkit-input-placeholder {
+            font-size: 80%;
+        }
+
+        body {
+            font-family: 'lato',sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.5;
+            background-image: linear-gradient(90deg, #ffb170, #ff76d5);
+            font-family: Helvetica;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+
+        .form-group {
+            padding-top: 25px;
+        }
+
+
+
+
+        .duzenle a {
+            padding-top: 20px;
+            margin-left: 35%;
+            text-decoration: none;
+            font-size: 18px;
+            color: #cf3030;
+            font-weight: 700;
+        }
+
+
+        .hizala {
+            margin-left: 10%;
+        }
+
+        .duzenle {
+            float: left;
+            margin-top: 70px;
+        }
+
+        .duzenle {
+            background-color: #ea9d9d;
+            height: 325px;
+            margin-left: 45px;
+            width: 25%;
+            border-style: solid;
+            border-color: #cf3030;
+            border-radius: 10px;
+        }
+
+        .duzenle_1{
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+
+
+
+
+
+
+        .fill-purple {
+            background-image: linear-gradient(90deg, #4addff, #a34dfe);
+        }
+
+        .fill-green {
+            background-image: linear-gradient(90deg, #ffe40c, #33d497);
+        }
+
+        .fill-blue {
+            background-image: linear-gradient(90deg, #285ca5, #18d5ff);
+        }
+
+        .fill-orange {
+            background-image: linear-gradient(90deg, #fcf595, #ff954d);
+        }
+
+        .cards {
+            display: flex;
+            flex-direction: row;
+            /*align-items: center;
+    justify-content: center;*/
+            position: relative;
+            height: 27.875rem;
+            width: 80%;
+        }
+
+        .card {
+            display: flex;
+            width: 40rem;
+            height: 22.25rem;
+            border-radius: 0.8rem;
+            /*transform-origin: center center;*/
+            transform: scale(1) translate(0px,0px) perspective( 750px ) rotateY(0deg);
+            transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+            transition-duration: 0.5s;
+            position: absolute;
+            top: 0;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.1);
+            z-index: 3;
+            /*cursor: pointer;*/
+            overflow: hidden;
+        }
+
+            .card * {
+                pointer-events: none;
+            }
+
+        .card--left {
+            transform: scale(0.75) translate(-200px,0px) perspective( 750px ) rotateY(10deg);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+
+        .card--center {
+            transform: scale(1) translate(0px, 0px) perspective( 750px ) rotateY(0deg);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.1);
+            z-index: 3;
+        }
+
+        .card--right {
+            transform: scale(0.75) translate(200px,0px) perspective( 750px ) rotateY(-10deg);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+
+        .card__icon {
+            width: 30%;
+            height: 100%;
+            background: rgba(255,255,255,0.5);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .card__icon:before {
+                content: attr(data-icon);
+                font-size: 3rem;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100px;
+                height: 100px;
+                border-radius: 50px;
+                background: rgba(255,255,255,1);
+            }
+
+        .card__detail {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #duzenle {
+            margin-top: 125px;
+            height: 280px;
+            margin-left: 250px;
+            width: 600px;
+        }
+
+
+
+
+    </style>
+    <link href="~/Css/UyeAna.css" rel="stylesheet" />
+    <link href="~/Css/UyeIndex.css" rel="stylesheet" />
+    <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="widht=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+    <div class="topnav" id="a">
+        <div id="baslik">
+            <a href="@Url.Action("Index","Member")" class="smoothScroll" id="a">
+                <i class="fas fa-arrow-alt-circle-left" style="font-size:45px;margin-left:20px; color:black;"></i>
+            </a>
+            @*<div class="search-container">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>*@
+
+        </div>
+    </div>
+
+
+    @*<textarea name="" id="status" placeholder="What's on you mind?"><div class="text-area">*@
+
+    @if (((int)Session["Kilo"]) >= 90)
+    {
+
+        <div id="duzenle">
+            <div class="cards">
+
+                <div class="card fill-orange" data-card="0" style="
+                background-image: url('../../Picture/Arkaplan/pexels-photo-1328545.jpeg');">
+
+
+                    <div class="card__icon" data-icon="1"></div>
+                    <div class="card__detail" style="color:white; font-weight:800;">Betül KaradumanAA</div>
+                </div>
+                <div class="card fill-blue" data-card="1" style="
+                   background-image: url('../../Picture/Arkaplan/pexels-photo-994523.jpeg');">
+                    <div class="card__icon" data-icon="2"></div>
+                    <div class="card__detail" style="color:white; font-weight:800;">details</div>
+                </div>
+                <div class="card fill-green" data-card="2" style="
+                 background-image: url('../..//Picture/Arkaplan/pexels-photo-1036856.jpeg');">
+                    <div class="card__icon" data-icon="3"></div>
+                    <div class="card__detail" style="color:white; font-weight:800;">details</div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+    else if (((int)Session["Kilo"]) >= 50 || ((int)Session["Kilo"]) <= 90)
+    {
+
+
+        <div id="duzenle">
+            <div class="cards">
+
+                <div class="card fill-orange" data-card="0" style="
+            background-image: url('../../Picture/Arkaplan/pexels-photo-1328545.jpeg');">
+
+
+                    <div class="card__icon" data-icon="1"></div>
+                    <div class="card__detail" style="color:white; font-weight:800;">Betül KaradumanBB</div>
+                </div>
+                <div class="card fill-blue" data-card="1" style="
+               background-image: url('../../Picture/Arkaplan/pexels-photo-994523.jpeg');">
+                    <div class="card__icon" data-icon="2"></div>
+                    <div class="card__detail" style="color:white; font-weight:800;">details</div>
+                </div>
+                <div class="card fill-green" data-card="2" style="
+             background-image: url('../..//Picture/Arkaplan/pexels-photo-1036856.jpeg');">
+                    <div class="card__icon" data-icon="3"></div>
+                    <div class="card__detail" style="color:white; font-weight:800;">details</div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+
+
+    else
+    {
+
+        <div id="duzenle">
+            <div class="cards">
+
+                <div class="card fill-orange" data-card="0" style="
+            background-image: url('../../Picture/Arkaplan/pexels-photo-1328545.jpeg');">
+
+
+                    <div class="card__icon" data-icon="1"></div>
+                    <div class="card__detail" style="color:white; font-weight:800;">Betül KaradumanCC</div>
+                </div>
+                <div class="card fill-blue" data-card="1" style="
+               background-image: url('../../Picture/Arkaplan/pexels-photo-994523.jpeg');">
+                    <div class="card__icon" data-icon="2"></div>
+                    <div class="card__detail" style="color:white; font-weight:800;">details</div>
+                </div>
+                <div class="card fill-green" data-card="2" style="
+             background-image: url('../..//Picture/Arkaplan/pexels-photo-1036856.jpeg');">
+                    <div class="card__icon" data-icon="3"></div>
+                    <div class="card__detail" style="color:white; font-weight:800;">details</div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+
+
+    <script>
+        const Cards = ((() => {
+            window.addEventListener('DOMContentLoaded', () => { setTimeout(init, 1) }, true);
+
+            function init(e) {
+                if (document.querySelector(".cards")) {
+                    let cards = document.querySelector(".cards");
+                    cards.addEventListener('click', clicked, false);
+                    document.querySelectorAll(".cards .card")[1].click();
+                }
+            }
+
+            function clicked(e) {
+                let card = e.target;
+                if (card.getAttribute("data-card")) { rearrange(card.getAttribute("data-card")); }
+            }
+
+            function rearrange(card) {
+                let cards = document.querySelectorAll(".cards .card");
+                for (let n = 0; n < cards.length; n++) {
+                    cards[n].classList.remove("card--left");
+                    cards[n].classList.remove("card--center");
+                    cards[n].classList.remove("card--right");
+                }
+                cards[card].classList.add("card--center");
+                if (card == 0) {
+                    cards[2].classList.add("card--left");
+                    cards[1].classList.add("card--right");
+                }
+                if (card == 1) {
+                    cards[0].classList.add("card--left");
+                    cards[2].classList.add("card--right");
+                }
+                if (card == 2) {
+                    cards[1].classList.add("card--left");
+                    cards[0].classList.add("card--right");
+                }
+            }
+
+            return {
+                init
+            }
+        })());
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+

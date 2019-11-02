@@ -1,0 +1,122 @@
+﻿@*@model Trial.Models.UyeYorumum
+@{
+    ViewBag.Title = "YorumuEkle";
+}
+<html>
+<head></head>
+<body>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4 style="font-size:large;color:brown;font-weight:100;font-weight:bold; margin-left:210px;">Yorumunu yap</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-10" style="display:none;">
+                    @Html.TextBox("UserId", null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+            @*<div class="container">
+                <form action="" class="duzenle">
+                    @*<textarea name="" id="status" placeholder="What's on you mind?"><div class="text-area">
+                    @Html.TextAreaFor(model => model.yorumum, new { placeholder = "Senin modan ne..." })
+                </form>*@
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="YAYINLA" class="btn btn-danger" style="margin-left:75%;" />
+                    </div>
+                </div>
+                @*<div class="button-wrapper duzenle">
+                        <p class="characters">240</p>
+                        <a href="#" class="btn">post</a>
+                    </div>
+                    <ul class="posts"></ul>*@
+            </div>
+        </div>
+
+
+    }
+
+
+
+    <script>
+        var main = function () {
+
+            $('.btn').click(function (e) {
+                e.preventDefault();
+                var post = $('#status').val();
+                $('<li>').text(post).prependTo('.posts').addClass('post');
+                $('<button class="close">X</button>').appendTo('.post').hide();
+                $('#status').val('');
+                $('.characters').text('240');
+                $('.btn').addClass('disabled');
+
+                $('.post').click(function () {
+                    // adding class selected-post to the post you click on //
+                    $(this).addClass('selected-post').siblings().removeClass('selected-post');
+                    // showing the x button when clicking on the post and hiding it from other posts //
+                    $('.selected-post').children('.close').show().parent().siblings().children('.close').hide();
+
+                    // Removing the post when click on X button //
+                    $('.close').click(function () {
+                        $(this).parent('li.post').remove();
+                    });
+
+                });
+
+            });
+
+            $('#status').keyup(function () {
+                var postLength = $(this).val().length,
+                    charactersLeft = 240 - postLength;
+                $('.characters').text(charactersLeft);
+
+                if (charactersLeft <= 0) {
+                    $('.btn').addClass('disabled');
+                    $('.characters').text("Message too long")
+                } else if (charactersLeft == 240) {
+                    $('.btn').addClass('disabled');
+                } else {
+                    $('.btn').removeClass('disabled');
+                }
+            });
+
+            $('.btn').addClass('disabled');
+        }
+
+        $(document).ready(main);
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

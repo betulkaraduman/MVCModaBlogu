@@ -1,0 +1,160 @@
+﻿@model Trial.Models.ViewModel
+
+@{
+    ViewBag.Title = "YorumListele";
+}
+
+<html>
+<head>
+    <style>
+
+        .aralik {
+            height: 50px;
+        }
+
+        .hizala {
+            /*margin-left:20px;*/
+            float: left;
+        }
+
+
+        .yorumlar {
+            color: #cf3030;
+            width: 700px;
+            height: 140px;
+            background-color: #ea9d9d;
+        }
+
+        .duzenle {
+            margin-top: 20px;
+        }
+
+        .yazi {
+            font-size: 16px;
+            font-weight: 700;
+            margin-left: 20px;
+            margin-top: 30px;
+        }
+
+        .yaziduzen {
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        .Buton {
+            margin-left: 550px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 17px;
+            color: #cf3030;
+        }
+
+        #ayırma {
+            float: left;
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/regular.css" integrity="sha384-FKw7x8fCxuvzBwOJmhTJJsKzBl8dnN9e2R4+pXRfYoHivikuHkzWyhKWDSMcGNK8" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link href="~/Css/MakyajDetay.css" rel="stylesheet" />
+    <link href="~/Css/UyeIndex.css" rel="stylesheet" />
+    <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="widht=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="topnav">
+        <a href="#" class="baslık">MODA</a>
+        <a href="@Url.Action("Create","Member",new {id=Session["UserId"]})" class="smoothScroll">şişişi</a>
+        <a href="@Url.Action("YorumEkle","Member",new {id=Session["UserId"] } )" class="baslık">YORUMUN</a>
+        <a href="@Url.Action("Guncelle","Member",new {id=Session["UserId"]})" class="smoothScroll">BİLGİLERİN</a>
+        <div class="search-container">
+            <form action="/action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <br />
+    <h2 style="margin-left:380px;color: #cf3030;">Modaya Siz Kadınlar Yön  Verin</h2>
+    <div class="hizala">
+        @using (Html.BeginForm("YorumListele1", "Yorum", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            foreach (var item in Model.uyeYorums)
+            {
+                <div id="ayırma">
+                    <div class="duzenle">
+                        <div>
+                            <span>@Html.DisplayFor(modelItem => item.uyes.Name)</span>
+                        </div>
+                        <div class="yorumlar">
+
+                            <br />
+                            <div class="yaziduzen">
+                                <h5><a href="/Yorum/YorumListele1/" style="text-decoration:none; font-size:15px; margin-left:15px; margin-right:15px; color:black; font-weight:700;">~ @item.Yorum</a></h5>
+                            </div><br />
+                            <a href="@Url.Action("YorumListele1", "Yorum", new { Yid = item.YorumId })" class="Buton">
+                                <i class="fas fa-heart" style="margin-left:65px; font-size:45px;"></i>
+                            </a>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    @using (Html.BeginForm("YorumListele1", "Yorum", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        <h4 style="padding-left:965px; font-size:16px; ">Yorum Puanları</h4>
+        foreach (var item in Model.yorumPuans)
+        {
+            <div style="margin-bottom:18px; margin-left:40px;"></div>
+            <div style=" background-color: #ea9d9d; height:140px;margin-left:950px; margin-right:250px;">
+                <div style="height:45px;"></div>
+                <h5><a href="#" style="text-decoration:none; font-size:15px; margin-left:55px; margin-right:15px; color:black; font-weight:700;">~ @item.UyePuan</a></h5>
+                <i class="fas fa-heart" style="margin-left:54px; font-size:35px;"></i>
+            </div>
+        }
+    }
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".like").click(function () {
+                var likeScore = parseInt($(".like-score").text());
+                likeScore++;
+                $(".like-score").text(likeScore);
+            });
+            $(".dislike").click(function () {
+                var dislikeScore = parseInt($(".dislike-score").text());
+                dislikeScore++;
+                $(".dislike-score").text(dislikeScore);
+            });
+        });
+    </script>
+</body>
+</html>
+
+@*<h5><a href="#" style="text-decoration:none; font-size:15px; margin-left:15px; margin-right:15px; color:black; font-weight:700;">@item.uyes.UserId</a></h5>*@
+
+
+
+
+
+
+
+
+
+

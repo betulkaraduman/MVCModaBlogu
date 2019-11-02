@@ -1,0 +1,848 @@
+﻿@model List<Trial.Models.Resimler>
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+<html>
+<head>
+    <style>
+
+
+        .container {
+            margin-left: 2px;
+            /*max-width: 250px;*/
+        }
+
+        #mobile-nav {
+            display: none;
+            padding-left: 10px;
+            margin-top: 0;
+            width: 10%;
+        }
+
+        #top-bar {
+            margin-left: 12px;
+            margin-top: 25px;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+
+        #mobile-nav li {
+            margin-left: -4px;
+            padding-top: 15px;
+            list-style-type: none;
+            width: 150px;
+            display: block;
+            border-bottom: thin solid #e9cbcb;
+            border-top: none;
+            width: 48px;
+        }
+
+            #mobile-nav li:hover {
+                width: 140px;
+                background-color: #e97272;
+            }
+
+            #mobile-nav li a {
+                color: black;
+                font-weight: 700;
+                text-decoration: none;
+                display: block;
+                box-sizing: border-box;
+                width: 80%;
+                height: 100%;
+            }
+
+        #menu-button:hover {
+            cursor: pointer;
+        }
+
+
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #aralık {
+            height: 120px;
+        }
+
+        body {
+            font-family: 'lato',sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.5;
+            background-color: #e9cbcb;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        .form-group {
+            padding-top: 25px;
+        }
+
+
+        .hizala {
+            margin-left: 15%;
+        }
+
+        .duzenle {
+            height: 425px;
+            margin-left: 65px;
+            width: 20%;
+            float: left;
+            margin-top: 70px;
+        }
+
+        #a a {
+            color:#551A8B;
+            margin-top: 1%;
+            margin-left: 1%;
+            float: left;
+            display: block;
+            color: #cf3030;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        #baslik {
+            height: 5%;
+            margin-top: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        img {
+            border: none;
+        }
+
+        .comparison-slider {
+            margin-left: 160px;
+            position: relative;
+            width: 78%;
+            min-height: 52vw;
+            overflow: hidden;
+        }
+
+        .picture {
+            position: absolute;
+            width: 100vw;
+            min-height: 60vw;
+            overflow: hidden;
+        }
+
+        .picture__content-wrap {
+            position: absolute;
+            width: 100vw;
+            min-height: 60vw;
+        }
+
+        .picture__content {
+            position: absolute;
+            width: 25%;
+            top: 20%;
+            left: 7%;
+            padding: 2.5%;
+            text-align: center;
+            z-index: 41;
+        }
+
+        .picture--before .picture__content {
+            background-color: rgba(34, 34, 34, 0.75);
+            color: #fff;
+        }
+
+        .picture--after .picture__content {
+            background-color: rgba(240, 248, 255, 0.75);
+            color: #222;
+        }
+
+        .picture img {
+            position: absolute;
+            display: block;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .comparison-slider h3 {
+            font-family: "Kaushan Script", cursive;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .picture--before h3 {
+            color: #fff;
+        }
+
+        .picture--after h3 {
+            color: #214569;
+        }
+
+        .comparison-slider p {
+            font-family: "Tangerine", cursive;
+            font-size: 8px;
+        }
+
+        .picture--before {
+            z-index: 1;
+        }
+
+        .handle {
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            height: 120%;
+            width: 2px;
+            background-color: #214569;
+            transform: rotate(15deg) translateY(-50%);
+            transform-origin: top;
+            z-index: 3;
+        }
+
+        .picture--after {
+            transform: skew(-15deg);
+            margin-left: -2000px;
+            width: calc(50vw + 2000px);
+            z-index: 2;
+        }
+
+        #a {
+            height: 100px;
+        }
+
+        .picture--after .picture__content-wrap {
+            transform: skew(15deg);
+            margin-left: 2000px;
+        }
+
+
+        #menu {
+            margin-left: 70%;
+            cursor: pointer;
+            padding: 15px;
+            max-height: 100%;
+            overflow: hidden;
+        }
+
+            #menu #line {
+                height: 4px;
+                display: block;
+                width: 40px;
+                background: #FFF;
+                box-shadow: 0 1px 6px #000;
+                margin: 10px;
+                opacity: 1;
+                transition: all 500ms ease;
+            }
+
+            #menu.active #line:nth-child(1) {
+                height: 900px;
+                width: 250px;
+                margin: -20px;
+                box-shadow: 0 0 0 rgba(1, 1, 1, 0);
+            }
+
+            #menu.active #line:nth-child(2),
+            #menu.active #line:nth-child(3) {
+                opacity: 0;
+            }
+
+        #nav {
+            padding: 20px;
+        }
+
+        #menu:not(.active) #nav li {
+            opacity: 0;
+            margin-bottom: -10px;
+        }
+
+        #menu #nav li {
+            opacity: 1;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: opacity 500ms ease, margin-bottom 500ms ease, padding-left 250ms ease;
+        }
+
+            #menu #nav li:hover {
+                padding-left: 5px;
+            }
+
+        .hizalam {
+            float: left;
+            height: 40px;
+            width: 70%;
+        }
+    </style>
+    <link href="~/Css/UyeIndex.css" rel="stylesheet" />
+    <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="widht=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    @*<title>Minimalist, Responsive, Menu Bar (jQuery)</title>*@
+
+
+
+    <div class="hizalam">
+        <div class="container">
+            <div id="top-bar">
+                <img id="menu-button" src="http://mattdesimini.com/images/howtoweb/menu.png" style="width:34px">
+            </div>
+            <ul id="mobile-nav">
+                <li><a href="@Url.Action("MakyajOlustur","UyeDetay",new { id = Session["UserId"] })" style="margin-left:15px;margin-bottom:10px;">Makyaj</a></li>
+                <li><a href="@Url.Action("MarkaOlustur","UyeDetay",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="smoothScroll" style="margin-left:15px;margin-bottom:10px;">Markan</a></li>
+                <li><a href="@Url.Action("FizikselOzellik","UyeDetay",new { id = Session["UserId"] })" style="margin-left:15px;margin-bottom:10px;">Özelliklerin</a></li>
+                <li><a href="@Url.Action("Guncelle","Member",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Güncelle</a></li>
+                <li><a href="@Url.Action("BegeniGetirme","Member",new {id=Session["UserId"]})" style="margin-left:15px;margin-bottom:10px;">Kaydettiklerim</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="hizalam" style="margin-left:-610px; margin-top:20px;">
+
+        <a href="@Url.Action("Begeni","Member",new { id = Session["UserId"] })" class="smoothScroll" id="a" style="font-size:25px; margin-left:10px;margin-top:-15px; text-decoration:none;">Kombinler</a>
+        <a href="@Url.Action("YorumEkle","Member",new {id=Session["UserId"] } )" class="baslık" style="font-size:25px; margin-left:40px; text-decoration:none; margin-top:-14px;">Yorum</a>
+        <a href="@Url.Action("OzellikDetay","Member",new {id=Session["UserId"]})" class="smoothScroll" id="a" style="font-size:25px; margin-left:40px;margin-top:-15px; text-decoration:none;">Goz Ten detay</a>
+        <a href="@Url.Action("Ozellik","Member",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="baslık" id="a" style="font-size:25px; margin-left:40px; text-decoration:none; margin-top:-14px;">Marka</a>
+        <a href="@Url.Action("Cıkıs","Member")" class="baslık" style="font-size:25px; margin-left:40px; text-decoration:none; margin-top:-14px;" id="a">Cıkış</a>
+
+    </div>
+
+    <div style="height:100px;"></div>
+
+
+
+
+    <section id="comparison-slider" class="comparison-slider">
+        <div class="picture picture--before">
+            <div class="picture__content-wrap">
+                <div class="picture__content">
+                    <h3> – Coco Chanel</h3>
+                    <p style="font-size:15px;">
+                        Moda yalnızca kıyafetlerde olan bir şey değildir. Moda gökyüzündedir, sokaklardadır, fikirlerle, yaşam tarzımızla, olan olaylarla ilgilidir.”
+                    </p>
+                </div>
+                @*https://s3.amazonaws.com/projects.loratadin.com/fashion/photo.jpg*@
+
+                <img src="https://s3.amazonaws.com/projects.loratadin.com/fashion/photo.jpg" alt="photo">
+                @*<img src="~/Picture/resimlerin/resim1d.PNG"  alt="photo"/>*@
+            </div>
+        </div>
+        <div class="picture picture--after">
+            <div class="picture__content-wrap">
+                <div class="picture__content">
+                    <h3> – Coco Chanel</h3>
+                    <p style="font-size:15px;">
+                        Moda yalnızca kıyafetlerde olan bir şey değildir. Moda gökyüzündedir, sokaklardadır, fikirlerle, yaşam tarzımızla, olan olaylarla ilgilidir.”
+                    </p>
+                </div>
+                <img src="https://s3.amazonaws.com/projects.loratadin.com/fashion/sketch.jpg" alt="photo">
+                @*<img src="~/Picture/resimlerin/resim2d.PNG"alt="photo" />*@
+            </div>
+        </div>
+        <div class="handle"></div>
+    </section>
+
+
+    <div style="height:100px;"></div>
+
+    <script src="./js/comparison-slider.js"></script>
+    <script>
+        /*Hide menu by default*/
+        $("#menu").hide();
+
+        /*When menu button is clicked, toggle the menu*/
+        $("#menu-btn").click(function () {
+            $("#menu").slideToggle();
+        });
+
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let comparisonSlider = document.getElementById('comparison-slider');
+            let pictureAfter = comparisonSlider.querySelector('.picture--after');
+            let handle = comparisonSlider.querySelector('.handle');
+            let skew = 0;
+            let delta = 0;
+
+            if (comparisonSlider.className.indexOf('comparison-slider') != -1) { //if our section has a class ‘comparison-slider’
+                skew = 2000;
+            }
+
+            comparisonSlider.addEventListener('mousemove', function (e) {
+                delta = (e.clientX - window.innerWidth / 2) * 0.5; // distance between the mouse and the center of the section
+                handle.style.left = e.clientX + delta + 'px'; // change handle position
+                pictureAfter.style.width = e.clientX + skew + delta + 'px'; // change width of pictureAfter
+            });
+        });
+    </script>
+
+
+    <script>
+        $(function () {
+            $("#menu-button").click(function () {
+                $("#mobile-nav").toggle('display');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<html>
+    <head>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            .topnav {
+                overflow: hidden;
+                background-color: #ea9d9d;
+                width: 100%;
+                height: 6%;
+                padding: 0px;
+            }
+
+            .top {
+                margin-top: 2%;
+                margin-left: 5%;
+                margin-right: 8%;
+            }
+
+            .topnav a {
+                margin-top: 2%;
+                margin-left: 3%;
+                float: left;
+                display: block;
+                color: aqua;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 28px;
+                font-weight: 700;
+            }
+
+                .topnav a:hover {
+                    background-color: #efb7b7;
+                    color: #e97272;
+                }
+
+                .topnav a.active {
+                    color: #cf3030;
+                }
+
+            .topnav .search-container {
+                float: right;
+            }
+
+            .topnav input[type=text] {
+                padding: 6px;
+                margin-top: 8px;
+                font-size: 12px;
+                border: none;
+                width: 60%;
+                height: 25px;
+            }
+
+            .search-container {
+                margin-top: 2%;
+                height: 35px;
+            }
+
+            .topnav .search-container button {
+                height: 25px;
+                float: right;
+                padding: 6px 10px;
+                margin-top: 8px;
+                margin-right: 22%;
+                background: #efb7b7;
+                font-size: 17px;
+                border: none;
+                cursor: pointer;
+            }
+
+                .topnav .search-container button:hover {
+                    background: #ccc;
+                }
+
+            #aralık {
+                height: 120px;
+            }
+
+            .topnav input[type=text] {
+                padding: 6px;
+                margin-top: 8px;
+                font-size: 17px;
+                border: none;
+            }
+
+            ::-webkit-input-placeholder {
+                font-size: 80%;
+            }
+
+            body {
+                font-family: 'lato',sans-serif;
+                font-size: 1.6rem;
+                font-weight: 400;
+                line-height: 1.5;
+                background-color: #e9cbcb;
+            }
+
+            html {
+                font-size: 10px;
+            }
+
+            .form-group {
+                padding-top: 25px;
+            }
+
+
+            .hizala {
+                margin-left: 15%;
+            }
+
+            .duzenle {
+                height: 425px;
+                margin-left: 65px;
+                width: 20%;
+                float: left;
+                margin-top: 70px;
+            }
+
+            #a a {
+                margin-top: 1%;
+                margin-left: 1%;
+                float: left;
+                display: block;
+                color: #cf3030;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 22px;
+                font-weight: 600;
+            }
+
+            #baslik {
+                height: 5%;
+                margin-top: 10px;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            img {
+                border: none;
+            }
+
+            .comparison-slider {
+                position: relative;
+                width: 100%;
+                min-height: 58vw;
+                overflow: hidden;
+            }
+
+            .picture {
+                position: absolute;
+                width: 100vw;
+                min-height: 60vw;
+                overflow: hidden;
+            }
+
+            .picture__content-wrap {
+                position: absolute;
+                width: 100vw;
+                min-height: 60vw;
+            }
+
+            .picture__content {
+                position: absolute;
+                width: 25%;
+                top: 20%;
+                left: 7%;
+                padding: 2.5%;
+                text-align: center;
+                z-index: 41;
+            }
+
+            .picture--before .picture__content {
+                background-color: rgba(34, 34, 34, 0.75);
+                color: #fff;
+            }
+
+            .picture--after .picture__content {
+                background-color: rgba(240, 248, 255, 0.75);
+                color: #222;
+            }
+
+            .picture img {
+                position: absolute;
+                display: block;
+                width: 100%;
+                top: 0;
+                left: 0;
+            }
+
+            .comparison-slider h3 {
+                font-family: "Kaushan Script", cursive;
+                font-size: 12px;
+                text-transform: uppercase;
+            }
+
+            .picture--before h3 {
+                color: #fff;
+            }
+
+            .picture--after h3 {
+                color: #214569;
+            }
+
+            .comparison-slider p {
+                font-family: "Tangerine", cursive;
+                font-size: 8px;
+            }
+
+            .picture--before {
+                z-index: 1;
+            }
+
+            .handle {
+                position: absolute;
+                display: block;
+                top: 50%;
+                left: 50%;
+                height: 120%;
+                width: 2px;
+                background-color: #214569;
+                transform: rotate(15deg) translateY(-50%);
+                transform-origin: top;
+                z-index: 3;
+            }
+
+            .picture--after {
+                transform: skew(-15deg);
+                margin-left: -2000px;
+                width: calc(50vw + 2000px);
+                z-index: 2;
+            }
+
+            #a {
+                height: 100px;
+            }
+
+            .picture--after .picture__content-wrap {
+                transform: skew(15deg);
+                margin-left: 2000px;
+            }
+
+
+            #menu {
+                margin-left: 70%;
+                cursor: pointer;
+                padding: 15px;
+                max-height: 100%;
+                overflow: hidden;
+            }
+
+                #menu #line {
+                    height: 4px;
+                    display: block;
+                    width: 40px;
+                    background: #FFF;
+                    box-shadow: 0 1px 6px #000;
+                    margin: 10px;
+                    opacity: 1;
+                    transition: all 500ms ease;
+                }
+
+                #menu.active #line:nth-child(1) {
+                    height: 900px;
+                    width: 250px;
+                    margin: -20px;
+                    box-shadow: 0 0 0 rgba(1, 1, 1, 0);
+                }
+
+                #menu.active #line:nth-child(2),
+                #menu.active #line:nth-child(3) {
+                    opacity: 0;
+                }
+
+            #nav {
+                padding: 20px;
+            }
+
+            #menu:not(.active) #nav li {
+                opacity: 0;
+                margin-bottom: -10px;
+            }
+
+            #menu #nav li {
+                opacity: 1;
+                font-size: 16px;
+                margin-bottom: 20px;
+                transition: opacity 500ms ease, margin-bottom 500ms ease, padding-left 250ms ease;
+            }
+
+                #menu #nav li:hover {
+                    padding-left: 5px;
+                }
+        </style>
+        <link href="~/Css/UyeIndex.css" rel="stylesheet" />
+        <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <meta name="viewport" content="widht=device-width" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    </head>
+    <body>
+
+        <div class="topnav" id="a">
+            <div id="baslik">
+                <a href="@Url.Action("Begeni","Member",new { id = Session["UserId"] })" class="smoothScroll" id="a">Anasayfa</a>
+                <a href="@Url.Action("YorumEkle","Member",new {id=Session["UserId"] } )" class="baslık">Yorum</a>
+                <a href="@Url.Action("OzellikDetay","Member",new {id=Session["UserId"]})" class="baslık">Goz Ten detay</a>
+                <a href="@Url.Action("Ozellik","Member",new {id=Session["UserId"],Name=Session["Name"],Username=Session["Username"]})" class="smoothScroll">Marka</a>
+                <a href="@Url.Action("BegeniGetirme","Member",new {id=Session["UserId"]})" class="baslık">Begenilerim</a>
+                @*<a href="@Url.Action("Index","UyeDetay")" class="baslık" style="margin-left:420px;">Profilin</a>
+                <div id="menu" onclick="javascript: this.classList.toggle('active');">
+                    <i id="line">
+                        <ul id="nav">
+                            <li>
+                                <a href="@Url.Action("deneme3","deneme",new { })" class="smoothScroll" id="a">Kombinler</a>
+                            </li>
+
+                        </ul>
+                    </i><i class="line"></i><i class="line"></i>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+        <section id="comparison-slider" class="comparison-slider">
+            <div class="picture picture--before">
+                <div class="picture__content-wrap">
+                    <div class="picture__content">
+                        <h3> – Coco Chanel</h3>
+                        <p style="font-size:15px;">
+                            Moda yalnızca kıyafetlerde olan bir şey değildir. Moda gökyüzündedir, sokaklardadır, fikirlerle, yaşam tarzımızla, olan olaylarla ilgilidir.”
+                        </p>
+                    </div>
+                    @*https://s3.amazonaws.com/projects.loratadin.com/fashion/photo.jpg
+
+                    <img src="https://s3.amazonaws.com/projects.loratadin.com/fashion/photo.jpg" alt="photo">
+                </div>
+            </div>
+            <div class="picture picture--after">
+                <div class="picture__content-wrap">
+                    <div class="picture__content">
+                        <h3> – Coco Chanel</h3>
+                        <p style="font-size:15px;">
+                            Moda yalnızca kıyafetlerde olan bir şey değildir. Moda gökyüzündedir, sokaklardadır, fikirlerle, yaşam tarzımızla, olan olaylarla ilgilidir.”
+                        </p>
+                    </div>
+                    <img src="https://s3.amazonaws.com/projects.loratadin.com/fashion/sketch.jpg" alt="photo">
+                </div>
+            </div>
+            <div class="handle"></div>
+        </section>
+        <script src="./js/comparison-slider.js"></script>
+        <script>
+            /*Hide menu by default*/
+            $("#menu").hide();
+
+            /*When menu button is clicked, toggle the menu*/
+            $("#menu-btn").click(function () {
+                $("#menu").slideToggle();
+            });
+
+        </script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                let comparisonSlider = document.getElementById('comparison-slider');
+                let pictureAfter = comparisonSlider.querySelector('.picture--after');
+                let handle = comparisonSlider.querySelector('.handle');
+                let skew = 0;
+                let delta = 0;
+
+                if (comparisonSlider.className.indexOf('comparison-slider') != -1) { //if our section has a class ‘comparison-slider’
+                    skew = 2000;
+                }
+
+                comparisonSlider.addEventListener('mousemove', function (e) {
+                    delta = (e.clientX - window.innerWidth / 2) * 0.5; // distance between the mouse and the center of the section
+                    handle.style.left = e.clientX + delta + 'px'; // change handle position
+                    pictureAfter.style.width = e.clientX + skew + delta + 'px'; // change width of pictureAfter
+                });
+            });
+        </script>
+
+
+    </body>
+    </html>*@
+

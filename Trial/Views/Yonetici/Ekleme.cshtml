@@ -1,0 +1,65 @@
+﻿@model Trial.Models.Ozellik
+{
+    ViewBag.Title = "Ekleme";
+}
+
+
+<html>
+<head></head>
+<body>
+
+
+
+
+    @using (Html.BeginForm("Ekleme", "Yonetici", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="icerik">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <h4>Ten Rengi : </h4>
+                <div class="col-md-10">
+                    <span class="isim">@Html.EditorFor(model => model.TenRengi, new { htmlAttributes = new { @class = "form-control" } }) </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>Goz rengi:</h4>
+
+                <div class="col-md-10">@Html.EditorFor(model => model.GozRengi, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Ekle" class="btn btn-default" style="width:176px; height:30px; background-color: #ea9d9d; font-size:16px; font-weight:500" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

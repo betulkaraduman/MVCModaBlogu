@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Trial.Models.KategoriResim>
+
+@{
+    ViewBag.Title = "Index";
+
+
+}
+
+<html>
+<head>
+    <style>
+        #a a {
+            margin-top: 2%;
+            margin-left: 3%;
+            float: left;
+            display: block;
+            color: #cf3030;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+       </style>
+     <link href="~/Css/YoneticiIndex.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+    <link href="~/Css/StyleSheet1.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="widht=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+</head>
+
+<body>
+
+    <div class="topnav" id="a">
+
+        <a href="" class="baslık">Genel</a>
+        <a href="/Yonetici/FizikselOzellik/" class="baslık">Fiziksel Ozellik</a>
+        <a href="/Yonetici/MarkaEkle" class="baslık">Marka Düzenle</a>
+        <a href="/Yonetici/UrunEkle" class="baslık">Makyaj Malzemeleri </a>
+        <a href="/Yonetici/FotografEkle" class="baslık">Fotograf</a>
+        <a href="/Yonetici/F_Ozellik" class="baslık">Fotograf</a>
+
+        @*<div class="search-container">
+            <form action="/action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>*@
+
+
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.kategori.KategoriAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KategoriResmi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.kategori.KategoriAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KategoriResmi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.KategoriResimId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.KategoriResimId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.KategoriResimId })
+        </td>
+    </tr>
+}
+
+</table>*@
